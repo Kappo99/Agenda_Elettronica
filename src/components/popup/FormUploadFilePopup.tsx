@@ -32,18 +32,11 @@ function FormUploadFilePopup(props: IProps) {
         }
 
         if (id) {
-            dispatch(uploadDocumento({ idAnagrafica: Number(id), name, file }))
-                .then((result) => {
-                    if (uploadDocumento.fulfilled.match(result)) {
-                        dispatch(addNotification({ message: 'Documento caricato', type: MessageType.SUCCESS }));
-                        setName('');
-                        setFile(null);
-                        props.onClose();
-                    }
-                })
-                .catch((error) => {
-                    dispatch(addNotification({ message: error || 'Errore durante il caricamento del documento', type: MessageType.ERROR }));
-                });
+            dispatch(uploadDocumento({ idAnagrafica: Number(id), name }));
+            dispatch(addNotification({ message: 'Documento caricato', type: MessageType.SUCCESS }));
+            setName('');
+            setFile(null);
+            props.onClose();
         }
     }
 

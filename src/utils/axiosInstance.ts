@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'; // TODO: Eliminare axios e questo file
 
 const axiosInstance = axios.create({
   baseURL: '/api', // Set this to your API base URL if different

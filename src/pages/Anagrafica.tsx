@@ -86,20 +86,13 @@ function Anagrafica(props: IProps) {
             return;
         }
         if (props.isCreating) {
-            dispatch(createAnagrafica(formData))
-                .then((result) => {
-                    if (createAnagrafica.fulfilled.match(result)) {
-                        setIsEditing(false);
-                        if (result.payload.Id) {
-                            navigate(`/anagrafica/${result.payload.Id}`);
-                        }
-                    }
-                })
-                .catch(() => dispatch(addNotification({ message: 'Errore durante la creazione', type: MessageType.ERROR })));
+            dispatch(createAnagrafica(formData));
+            setIsEditing(false);
+            // TODO: navigate to the new anagrafica page (verificare che salva correttamente l'anagrafica)
+            // navigate(`/anagrafica/${result.payload.Id}`);
         } else if (id) {
-            dispatch(updateAnagrafica({ id: Number(id), newAnagrafica: formData }))
-                .then((result) => updateAnagrafica.fulfilled.match(result) && setIsEditing(false))
-                .catch(() => dispatch(addNotification({ message: 'Errore durante l\'aggiornamento', type: MessageType.ERROR })));
+            dispatch(updateAnagrafica({ id: Number(id), newAnagrafica: formData }));
+            setIsEditing(false);
         }
     };
 
@@ -118,15 +111,10 @@ function Anagrafica(props: IProps) {
 
     const handleDelete = () => {
         if (id) {
-            dispatch(deleteAnagrafica(Number(id)))
-                .then((result) => {
-                    if (deleteAnagrafica.fulfilled.match(result)) {
-                        dispatch(addNotification({ message: 'Anagrafica eliminata', type: MessageType.SUCCESS }));
-                        dispatch(hidePopup());
-                        navigate('/');
-                    }
-                })
-                .catch((error) => dispatch(addNotification({ message: `Errore durante l'eliminazione dell'anagrafica: ${error}`, type: MessageType.ERROR })));
+            dispatch(deleteAnagrafica(Number(id)));
+            dispatch(addNotification({ message: 'Anagrafica eliminata', type: MessageType.SUCCESS }));
+            dispatch(hidePopup());
+            navigate('/');
         }
     };
 
@@ -145,14 +133,9 @@ function Anagrafica(props: IProps) {
 
     const handleDeleteDoc = (documento: IDocumento) => {
         if (id && documento) {
-            dispatch(deleteDocumento({ idAnagrafica: Number(id), documento }))
-                .then((result) => {
-                    if (deleteDocumento.fulfilled.match(result)) {
-                        dispatch(addNotification({ message: 'Documento eliminato', type: MessageType.SUCCESS }));
-                        dispatch(hidePopup());
-                    }
-                })
-                .catch((error) => dispatch(addNotification({ message: `Errore durante l'eliminazione del documento: ${error}`, type: MessageType.ERROR })));
+            dispatch(deleteDocumento({ idAnagrafica: Number(id), documento }));
+            dispatch(addNotification({ message: 'Documento eliminato', type: MessageType.SUCCESS }));
+            dispatch(hidePopup());
         }
     };
 
@@ -171,29 +154,19 @@ function Anagrafica(props: IProps) {
 
     const handleArchive = () => {
         if (id) {
-            dispatch(archiveAnagrafica(Number(id)))
-                .then((result) => {
-                    if (archiveAnagrafica.fulfilled.match(result)) {
-                        dispatch(addNotification({ message: 'Anagrafica archiviata', type: MessageType.SUCCESS }));
-                        dispatch(hidePopup());
-                        navigate('/');
-                    }
-                })
-                .catch((error) => dispatch(addNotification({ message: `Errore durante l'archiviazione dell'anagrafica: ${error}`, type: MessageType.ERROR })));
+            dispatch(archiveAnagrafica(Number(id)));
+            dispatch(addNotification({ message: 'Anagrafica archiviata', type: MessageType.SUCCESS }));
+            dispatch(hidePopup());
+            navigate('/');
         }
     };
 
     const handleUnarchive = () => {
         if (id) {
-            dispatch(unarchiveAnagrafica(Number(id)))
-                .then((result) => {
-                    if (unarchiveAnagrafica.fulfilled.match(result)) {
-                        dispatch(addNotification({ message: 'Anagrafica ripristinata', type: MessageType.SUCCESS }));
-                        dispatch(hidePopup());
-                        dispatch(fetchAnagraficaById(Number(id)));
-                    }
-                })
-                .catch((error) => dispatch(addNotification({ message: `Errore durante il ripristino dell'anagrafica: ${error}`, type: MessageType.ERROR })));
+            dispatch(unarchiveAnagrafica(Number(id)));
+            dispatch(addNotification({ message: 'Anagrafica ripristinata', type: MessageType.SUCCESS }));
+            dispatch(hidePopup());
+            dispatch(fetchAnagraficaById(Number(id)));
         }
     };
 

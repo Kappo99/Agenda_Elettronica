@@ -3,9 +3,9 @@ import Anagrafiche from '../components/Anagrafiche';
 
 function Archivio() {
   return (
-    <div className=''>
+    <>
         <Anagrafiche isArchived />
-    </div>
+    </>
   );
 }
 

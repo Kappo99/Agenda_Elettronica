@@ -1,7 +1,6 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axiosInstance from '../../utils/axiosInstance';
-import IDocumento from '../../types/IDocumento';
-import { updateDocumentiList } from './anagraficaSlice';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import IDocumento from "../../types/IDocumento";
+import { updateDocumentiList } from "./anagraficaSlice";
 
 interface DocumentoState {
   documenti: IDocumento[];
@@ -15,79 +14,43 @@ const initialState: DocumentoState = {
   error: null,
 };
 
-export const uploadDocumento = createAsyncThunk(
-  'documento/uploadDocumento',
-  async (
-    { idAnagrafica, name, file }: { idAnagrafica: number; name: string; file: File },
-    { dispatch, rejectWithValue }
-  ) => {
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('file', file);
-
-    try {
-      const response = await axiosInstance.post(`/anagrafica/${idAnagrafica}/documento`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      dispatch(updateDocumentiList({ idAnagrafica, documento: response.data }));
-      return response.data;
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Errore durante il caricamento del documento');
-    }
-  }
-);
-
-export const deleteDocumento = createAsyncThunk(
-  'documento/deleteDocumento',
-  async (
-    { idAnagrafica, documento }: { idAnagrafica: number; documento: IDocumento },
-    { dispatch, rejectWithValue }
-  ) => {
-    try {
-      await axiosInstance.delete(`/anagrafica/${idAnagrafica}/documento/${documento.Id}`);
-      dispatch(updateDocumentiList({ idAnagrafica, documento, remove: true }));
-      return { documento };
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Errore durante la rimozione del documento');
-    }
-  }
-);
-
 const documentoSlice = createSlice({
-  name: 'documento',
+  name: "documento",
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      //* Caricamento documento
-      .addCase(uploadDocumento.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(uploadDocumento.fulfilled, (state, action) => {
-        state.loading = false;
-        state.documenti.push(action.payload);
-      })
-      .addCase(uploadDocumento.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string || 'Errore durante il caricamento del documento';
-      })
-      //* Rimozione documento
-      .addCase(deleteDocumento.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(deleteDocumento.fulfilled, (state, action) => {
-        state.loading = false;
-        state.documenti = state.documenti.filter(doc => doc.Id !== action.payload.documento.Id);
-      })
-      .addCase(deleteDocumento.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string || 'Errore durante la rimozione del documento';
+  reducers: {
+    uploadDocumento(
+      state,
+      action: PayloadAction<{ idAnagrafica: number; name: string }>
+    ) {
+      const newDocumento: IDocumento = {
+        Id: state.documenti.length + 1,
+        Id_Anagrafica: action.payload.idAnagrafica,
+        Nome: action.payload.name,
+        Path: `/documents/${action.payload.name}`,
+        Creation: new Date().toISOString(),
+        Timestamp: new Date().toISOString(),
+      };
+      state.documenti.push(newDocumento);
+      updateDocumentiList({
+        idAnagrafica: action.payload.idAnagrafica,
+        documento: newDocumento,
       });
+    },
+    deleteDocumento(
+      state,
+      action: PayloadAction<{ idAnagrafica: number; documento: IDocumento }>
+    ) {
+      state.documenti = state.documenti.filter(
+        (d) => d.Id !== action.payload.documento.Id
+      );
+      updateDocumentiList({
+        idAnagrafica: action.payload.idAnagrafica,
+        documento: action.payload.documento,
+        remove: true,
+      });
+    },
   },
 });
 
+export const { uploadDocumento, deleteDocumento } = documentoSlice.actions;
 export default documentoSlice.reducer;

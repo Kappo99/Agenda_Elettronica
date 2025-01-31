@@ -32,3 +32,16 @@ export function todayStr (): string {
   const today = new Date();
   return today.toISOString().split('T')[0];
 }
+
+export function search(source: any[], searchTerm: string): any[] {
+  if (!searchTerm) return source;
+  const term = searchTerm.toLowerCase();
+  return source.filter((item) => {
+    return Object.values(item).some((value) => {
+      if (typeof value === 'string') {
+        return value.toLowerCase().includes(term);
+      }
+      return false;
+    });
+  });
+}

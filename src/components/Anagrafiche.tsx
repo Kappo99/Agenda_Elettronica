@@ -22,10 +22,8 @@ function Anagrafiche({ isArchived }: IProps) {
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        if (!anagrafiche) {
-            dispatch(isArchived ? fetchAnagraficheArchived() : fetchAnagrafiche());
-        }
-    }, [anagrafiche, dispatch]);
+        dispatch(isArchived ? fetchAnagraficheArchived() : fetchAnagrafiche());
+    }, []);
 
     useEffect(() => {
         if (searchTerm) {
@@ -48,11 +46,11 @@ function Anagrafiche({ isArchived }: IProps) {
     return (
         <div className='container'>
 
-            <div className='grid grid-cols-3 items-center mb-6'>
+            <div className='grid grid-cols-2 items-center mb-6 gap-6'>
                 <div className='col-span-1'>
                     <h1 className='h1'>Anagrafiche {isArchived && 'archiviate'}</h1>
                 </div>
-                <div className='col-span-2 flex items-center gap-5'>
+                <div className='col-span-1 flex items-center gap-5'>
                     <SearchBar value={searchTerm} onChange={setSearchTerm} />
                     <Link className={`btn ${isArchived && 'disabled'}`} to={'/anagrafica'}>Nuova <MdAdd size={18} /></Link>
                 </div>
@@ -66,9 +64,7 @@ function Anagrafiche({ isArchived }: IProps) {
                         <th>Nome</th>
                         <th>Codice Fiscale</th>
                         <th>Data Nascita</th>
-                        <th>
-                            {/* <button className='btn btn-sm btn-outline'><MdDownload /></button> */}
-                        </th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
