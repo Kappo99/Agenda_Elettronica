@@ -1,0 +1,43 @@
+import React from 'react';
+import KMsolution_white from '../images/KMsolution_white.svg';
+import casa_gialla from '../images/casa_gialla.png';
+import { MdFolderOpen } from 'react-icons/md';
+import { Link, useLocation } from 'react-router-dom';
+
+function Footer() {
+    const location = useLocation();
+
+    return (
+        <footer className='w-full bg-slate-800 text-white text-sm mt-12'>
+
+            <div className='container w-full py-5 lg:py-8'>
+
+                <div className='flex flex-col md:flex-row items-center justify-around gap-y-2'>
+
+                    <span className='credits'>&copy; {(new Date().getFullYear())} - Tutti i diritti riservati</span>
+
+                    {/* <img src={casa_gialla} className='w-auto h-8' alt='Casa Gialla' /> */}
+                    <button>
+                        {location.pathname === '/' ? (
+                            <Link to='/archivio' className='btn'>Archivio <MdFolderOpen size={18} /></Link>
+                        ) : (
+                            <Link to='/' className='btn'>Agenda <MdFolderOpen size={18} /></Link>
+                        )}
+                    </button>
+
+                    <div className='flex items-center gap-2'>
+                        <span data-translate='footer_credits'>Powered by</span>
+                        <a href='https://kmsolution.it' target='_blank'>
+                            <img src={KMsolution_white} className='w-auto h-4' alt='KMsolution' />
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </footer>
+    );
+}
+
+export default Footer;

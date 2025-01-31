@@ -1,0 +1,21 @@
+.form-element {
+    @apply flex items-center gap-4;
+    @apply uppercase text-sm;
+  
+    input, textarea, select {
+        @apply w-full border border-gray-300 rounded-lg px-2 py-0.5;
+    }
+    input[disabled], textarea[disabled], select[disabled] {
+        @apply bg-gray-100 text-gray-500 cursor-not-allowed;
+    }
+  
+    button {
+        @apply w-full px-4 py-1 rounded-lg;
+        @apply bg-casa_gialla_yellow hover:bg-casa_gialla_yellow-dark;
+        @apply uppercase text-sm;
+        @apply flex items-center justify-center gap-3;
+    }
+    button[disabled] {
+        @apply bg-gray-300 text-gray-500 cursor-not-allowed;
+    }
+}

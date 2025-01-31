@@ -1,0 +1,32 @@
+table {
+    @apply w-full border-separate border-spacing-0;
+    @apply bg-white border border-gray-300 shadow-md;
+
+    thead {   
+        @apply text-lg;
+           
+        tr {
+            @apply shadow;
+        }
+    }
+
+    tr {
+        &:nth-child(even) {
+            @apply bg-gray-100;
+        }
+
+        th, td {
+            @apply px-4 py-1 text-center text-nowrap;
+        }
+
+        th {
+            @apply !border-b;
+        }
+
+        &:last-child {
+            th, td {
+                @apply border-0;
+            }
+        }
+    }
+}

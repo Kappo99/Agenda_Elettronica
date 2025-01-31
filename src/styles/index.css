@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*::-webkit-scrollbar {-webkit-appearance: none; width: 6px; height: 6px;}
+*::-webkit-scrollbar-track-piece {background-color: #f1f1f1}
+*::-webkit-scrollbar-thumb {background-color: #c1c1c1; border-radius: 10px;}
+*::-webkit-scrollbar-thumb:vertical {height: 6px}
+*::-webkit-scrollbar-thumb:horizontal {width: 6px}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @apply bg-gray-50 m-0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.h1 {
+  @apply text-4xl font-bold uppercase;
+}
+
+.h2 {
+  @apply text-3xl font-semibold uppercase;
+}
+
+.h3 {
+  @apply text-2xl font-semibold uppercase;
+}
+
+.h4 {
+  @apply text-xl font-medium uppercase;
+}
+
+@layer components {
+  .btn {
+    @apply w-fit px-6 py-1.5 rounded-full text-nowrap;
+    @apply bg-casa_gialla_yellow hover:bg-casa_gialla_yellow-dark text-black;
+    @apply uppercase text-sm;
+    @apply flex items-center justify-center gap-3;
+
+    &.btn-outline {
+      @apply bg-transparent text-black border border-black hover:bg-black hover:text-white;
+    }
+
+    &.btn-xs {
+      @apply px-2 py-1;
+    }
+    &.btn-sm {
+      @apply px-4 py-1;
+    }
+    &.btn-lg {
+      @apply px-10 py-3;
+    }
+
+    &.btn-primary {
+      @apply bg-casa_gialla_yellow hover:bg-casa_gialla_yellow-dark text-black;
+    }
+    &.btn-danger {
+      @apply bg-red-500 hover:bg-red-700 text-white;
+    }
+  }
+  .btn[disabled], [disabled] .btn, .btn.disabled {
+    @apply !bg-gray-300 !text-gray-500 cursor-not-allowed pointer-events-none;
+  }
+}
