@@ -17,9 +17,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        casa_gialla_yellow: {
-          DEFAULT: '#FAB419',
-          dark: '#FA9F00',
+        agenda_web_primary: {
+          DEFAULT: '#EA573F',
+          dark: '#BD4531',
         }
       }
     },

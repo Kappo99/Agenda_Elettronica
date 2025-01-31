@@ -1,6 +1,6 @@
 import React from 'react';
 import KMsolution_white from '../images/KMsolution_white.svg';
-import casa_gialla from '../images/casa_gialla.png';
+import KMsolution from '../images/KMsolution.png';
 import { MdFolderOpen } from 'react-icons/md';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ function Footer() {
 
                     <span className='credits'>&copy; {(new Date().getFullYear())} - Tutti i diritti riservati</span>
 
-                    {/* <img src={casa_gialla} className='w-auto h-8' alt='Casa Gialla' /> */}
+                    {/* <img src={KMsolution} className='w-auto h-8' alt='Agenda Elettronica' /> */}
                     <button>
                         {location.pathname === '/' ? (
                             <Link to='/archivio' className='btn'>Archivio <MdFolderOpen size={18} /></Link>

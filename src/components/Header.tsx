@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import casa_gialla from '../images/casa_gialla.png';
+import KMsolution from '../images/KMsolution_black.svg';
 import { MdLogout, MdPerson } from 'react-icons/md';
 import { Link, useLocation } from 'react-router-dom';
 import { logout } from '../redux/slices/authSlice';
@@ -30,13 +30,13 @@ function Header() {
 
                     <div className='flex flex-col md:flex-row items-center justify-between gap-x-10 gap-y-6'>
 
-                        <Link to='/' className='flex-1'>
-                            <img src={casa_gialla} className='w-auto h-10' alt='Casa Gialla' />
+                        <Link to='/'>
+                            <img src={KMsolution} className='w-auto h-8' alt='Agenda Elettronica' />
                         </Link>
 
-                        <span className='flex-1 h2 text-center'>Casa gialla</span>
+                        <span className='flex-1 h2 text-center'>Agenda Elettronica</span>
 
-                        <div className='flex-1 flex justify-end'>
+                        <div className='flex justify-end'>
                             {location.pathname === '/profilo' ? (
                                 <button className='btn btn-danger' onClick={handleLogout}>Logout <MdLogout size={18} /></button>
                             ) : (
