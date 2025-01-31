@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import INotification from '../../types/INotification';
 import { MessageType } from '../../types';
+import { MdCheckCircle, MdError, MdInfo, MdWarning } from 'react-icons/md';
 
 interface IProps {
     notifications: INotification[];
@@ -10,11 +11,11 @@ interface IProps {
 function Notifications({ notifications, removeNotification }: IProps) {
     const processedNotifications = useRef(new Set<string>()); // Registro delle notifiche processate
 
-    const typeStyles = {
-        [MessageType.SUCCESS]: 'bg-green-600 text-white',
-        [MessageType.ERROR]: 'bg-red-600 text-white',
-        [MessageType.WARNING]: 'bg-yellow-500 text-black',
-        [MessageType.INFO]: 'bg-cyan-500 text-white',
+    const icons = {
+        [MessageType.SUCCESS]: <MdCheckCircle size={24} className='text-green-600' />,
+        [MessageType.ERROR]: <MdError size={24} className='text-red-600' />,
+        [MessageType.WARNING]: <MdWarning size={24} className='text-yellow-500' />,
+        [MessageType.INFO]: <MdInfo size={24} className='text-cyan-500' />,
     };
 
     useEffect(() => {
@@ -33,12 +34,13 @@ function Notifications({ notifications, removeNotification }: IProps) {
     }, [notifications, removeNotification]);
 
     return (
-        <div className="fixed bottom-4 right-4 flex flex-col gap-2 z-[500]">
+        <div className="fixed bottom-6 right-6 flex flex-col gap-2 z-[500]">
             {notifications.map(({ id, message, type }) => (
                 <div
                     key={id}
-                    className={`p-4 rounded-lg shadow-lg ${typeStyles[type]}`}
+                    className={`p-4 rounded-lg shadow-lg flex items-center gap-2 bg-white border`}
                 >
+                    {icons[type]}
                     {message}
                 </div>
             ))}
