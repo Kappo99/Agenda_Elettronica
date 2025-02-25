@@ -7,8 +7,8 @@ import { search } from "../../utils/functions";
 interface AnagraficaState {
   anagrafiche: IAnagrafica[];
   selectedAnagrafica: IAnagrafica | null;
-  loading: boolean;
-  error: string | null;
+  loadingAnagrafica: boolean;
+  errorAnagrafica: string | null;
 }
 
 const initialState: AnagraficaState = {
@@ -35,8 +35,8 @@ const initialState: AnagraficaState = {
     },
   ],
   selectedAnagrafica: null,
-  loading: false,
-  error: null,
+  loadingAnagrafica: false,
+  errorAnagrafica: null,
 };
 
 const anagraficaSlice = createSlice({

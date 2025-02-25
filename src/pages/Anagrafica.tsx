@@ -23,7 +23,7 @@ function Anagrafica(props: IProps) {
     const navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
     const dispatch = useAppDispatch();
-    const { selectedAnagrafica, loading, error } = useAppSelector((state) => state.anagrafica);
+    const { selectedAnagrafica, loadingAnagrafica: loading, errorAnagrafica: error } = useAppSelector((state) => state.anagrafica);
     const { loading: loadingDoc, error: errorDoc } = useAppSelector((state) => state.documento);
     const { idAnagrafica } = useAppSelector((state) => state.auth);
     const { registerCallback } = usePopup();

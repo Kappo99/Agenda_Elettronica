@@ -17,9 +17,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        agenda_web_primary: {
-          DEFAULT: '#EA573F',
-          dark: '#BD4531',
+        agenda_primary: {
+          DEFAULT: '#0096D4',
+          dark: '#1273eb',
         }
       }
     },

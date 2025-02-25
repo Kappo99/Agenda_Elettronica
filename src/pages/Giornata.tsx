@@ -22,14 +22,11 @@ function Giornata() {
   const { id } = useParams<{ id: string }>();
   const { date } = useParams<{ date: string }>();
   const dispatch = useAppDispatch();
-  const { selectedGiornata, loading, error } = useAppSelector(
+  const { selectedGiornata, loadingGiornata, errorGiornata } = useAppSelector(
     (state) => state.agenda
   );
-  const {
-    selectedAnagrafica,
-    loading: loadingAnagrafica,
-    error: errorAnagrafica,
-  } = useAppSelector((state) => state.anagrafica);
+  const { selectedAnagrafica, loadingAnagrafica, errorAnagrafica } =
+    useAppSelector((state) => state.anagrafica);
 
   const initialFormData: IGiornata = {
     ...exampleGiornata,
@@ -54,16 +51,22 @@ function Giornata() {
   }, [id, dispatch]);
 
   useEffect(() => {
-    if (selectedGiornata && !error) {
-      setFormData(selectedGiornata);
-      console.log("selectedGiornata", selectedGiornata);
+    if (!errorGiornata) {
+      if (selectedGiornata) {
+        setFormData(selectedGiornata);
+      } else {
+        setFormData(initialFormData);
+      }
+      setIsEditing(!selectedGiornata);
     }
-  }, [selectedGiornata, error]);
+  }, [selectedGiornata, errorGiornata]);
 
   useEffect(() => {
-    if (error) {
-      if (!error.includes("non trovata")) {
-        dispatch(addNotification({ message: error, type: MessageType.ERROR }));
+    if (errorGiornata) {
+      if (!errorGiornata.includes("non trovata")) {
+        dispatch(
+          addNotification({ message: errorGiornata, type: MessageType.ERROR })
+        );
       } else {
         if (selectedAnagrafica?.IsArchiviato) {
           dispatch(
@@ -80,7 +83,7 @@ function Giornata() {
     } else {
       setIsEditing(false);
     }
-  }, [error]);
+  }, [errorGiornata]);
 
   const addPisolino = () => {
     setFormData((prevData) => ({
@@ -223,37 +226,14 @@ function Giornata() {
       return;
     }
 
-    dispatch(createGiornata(formData))
-      .then((result) => {
-        if (createGiornata.fulfilled.match(result)) {
-          setIsEditing(false);
-          dispatch(
-            addNotification({
-              message: "Giornata salvata",
-              type: MessageType.SUCCESS,
-              tag: "createGiornata",
-            })
-          );
-        } else {
-          setIsEditing(true);
-        }
-      })
-      .catch(() =>
-        dispatch(
-          addNotification({
-            message: "Errore durante la creazione",
-            type: MessageType.ERROR,
-            tag: "createGiornata",
-          })
-        )
-      );
+    dispatch(createGiornata(formData));
   };
 
   return (
     <div className="container">
-      {loading && <Loading />}
+      {loadingGiornata && <Loading />}
 
-      {!loading && (selectedGiornata || isEditing) && (
+      {!loadingGiornata && (formData || isEditing) && (
         <>
           <AgendaNavbar
             isEditing={isEditing}

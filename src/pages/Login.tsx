@@ -52,7 +52,7 @@ function Login() {
                 onClose={() => setShowFormForgotPassword(false)}
             />
 
-            <div className='fixed top-0 left-0 w-screen h-svh bg-agenda_web_primary flex items-center justify-center'>
+            <div className='fixed top-0 left-0 w-screen h-svh bg-agenda_primary flex items-center justify-center'>
 
                 <div className='container w-full max-w-5xl p-10 lg:p-32 mx-6 bg-white rounded-2xl flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-32'>
 
@@ -85,7 +85,7 @@ function Login() {
                         )}
 
                         <p className='mt-6 text-center'>
-                            Password dimenticata? <span className='hover:text-agenda_web_primary-dark cursor-pointer' onClick={() => setShowFormForgotPassword(true)}>Clicca qui</span>
+                            Password dimenticata? <span className='hover:text-agenda_primary-dark cursor-pointer' onClick={() => setShowFormForgotPassword(true)}>Clicca qui</span>
                         </p>
 
                     </div>

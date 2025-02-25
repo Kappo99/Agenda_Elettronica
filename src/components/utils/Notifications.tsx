@@ -38,7 +38,7 @@ function Notifications({ notifications, removeNotification }: IProps) {
             {notifications.map(({ id, message, type }) => (
                 <div
                     key={id}
-                    className={`p-4 rounded-lg shadow-lg flex items-center gap-2 bg-white border`}
+                    className={`p-4 rounded-lg shadow-lg flex items-center gap-2 bg-white border bold`}
                 >
                     {icons[type]}
                     {message}

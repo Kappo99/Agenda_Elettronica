@@ -4,7 +4,7 @@ import { MdDelete, MdDownload } from 'react-icons/md';
 import { FaFileSignature } from 'react-icons/fa6';
 import { Link, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { deleteGiornata, downloadPdfGiornata, fetchAgenda } from '../redux/slices/agendaSlice';
+import { deleteGiornata, fetchAgenda } from '../redux/slices/agendaSlice';
 import Loading from '../components/utils/Loading';
 import PaginationControls from '../components/utils/PaginationControls';
 import { addNotification } from '../redux/slices/notificationSlice';
@@ -15,17 +15,16 @@ import { usePopup } from '../context/PopupContext';
 function Storico() {
 	const { id } = useParams<{ id: string }>();
 	const dispatch = useAppDispatch();
-	const { agenda, pages, loading, error } = useAppSelector((state) => state.agenda);
+	const { agenda, loadingGiornata: loading, errorGiornata: error } = useAppSelector((state) => state.agenda);
     const { registerCallback } = usePopup();
 
-	const [page, setPage] = useState(1);
 	const [searchTerm, setSearchTerm] = useState('');
 
 	useEffect(() => {
 		if (id) {
-			dispatch(fetchAgenda({ id: Number(id), page, limit: 15, searchTerm }));
+			dispatch(fetchAgenda({ id: Number(id), searchTerm }));
 		}
-	}, [id, dispatch, page, searchTerm]);
+	}, [id, dispatch, searchTerm]);
 
 	useEffect(() => {
 		if (error && !error.includes('Giornata') && !error.includes('non trovata')) {
@@ -48,32 +47,9 @@ function Storico() {
 
 	const handleDelete = (date: string) => {
 		if (id && date) {
-			dispatch(deleteGiornata({ id: Number(id), date }))
-				.then((result) => {
-					if (deleteGiornata.fulfilled.match(result)) {
-						dispatch(addNotification({ message: 'Giornata eliminata', type: MessageType.SUCCESS }));
-						dispatch(hidePopup());
-					}
-				})
-				.catch((error) => dispatch(addNotification({ message: `Errore durante l'eliminazione della giornata: ${error}`, type: MessageType.ERROR })));
-		}
-	};
-
-	const handleDownloadPdfGiornata = async (date: string) => {
-		if (id && date) {
-			try {
-				const blob = await downloadPdfGiornata({ id: Number(id), date });
-				const url = window.URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
-				const a = document.createElement('a');
-				a.href = url;
-				a.download = `giornata-${date}.pdf`;
-				document.body.appendChild(a);
-				a.click();
-				window.URL.revokeObjectURL(url);
-				document.body.removeChild(a);
-			} catch (error) {
-				console.error('Errore durante il download del PDF:', error);
-			}
+			dispatch(deleteGiornata(date));
+			dispatch(hidePopup());
+			dispatch(addNotification({ message: 'Giornata eliminata', type: MessageType.SUCCESS }));
 		}
 	};
 
@@ -112,7 +88,6 @@ function Storico() {
 								<button>
 									<Link className='btn btn-sm btn-primary' to={`/giornata/${id}/${giornata.Data}`}><FaFileSignature /></Link>
 								</button>
-								<button className='btn btn-sm btn-outline' onClick={() => handleDownloadPdfGiornata(giornata.Data)}><MdDownload /></button>
 								<button className='btn btn-sm btn-danger' onClick={() => handleDeleteConfirmClick(giornata.Data)}><MdDelete /></button>
 							</td>
 						</tr>
@@ -124,8 +99,6 @@ function Storico() {
 					)}
 				</tbody>
 			</table>
-
-			{pages > 1 && <PaginationControls page={page} totalPages={pages} onPageChange={setPage} />}
 		</div>
 	);
 }

@@ -16,7 +16,7 @@ interface IProps {
 
 function Anagrafiche({ isArchived }: IProps) {
     const dispatch = useAppDispatch();
-    const { anagrafiche, loading, error } = useAppSelector((state) => state.anagrafica);
+    const { anagrafiche, loadingAnagrafica: loading, errorAnagrafica: error } = useAppSelector((state) => state.anagrafica);
     const navigate = useNavigate();
 
     const [searchTerm, setSearchTerm] = useState('');

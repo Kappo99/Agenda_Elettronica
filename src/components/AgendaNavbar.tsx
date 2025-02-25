@@ -4,7 +4,6 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { fetchAnagraficaById } from '../redux/slices/anagraficaSlice';
 import { todayStr } from '../utils/functions';
-import FormDownloadStoricoPopup from './popup/FormDownloadStoricoPopup';
 import SearchBar from './utils/SearchBar';
 
 interface IProps {
@@ -25,7 +24,6 @@ function AgendaNavbar(props: IProps) {
     const location = useLocation();
 
     const [activeTab, setActiveTab] = useState('Storico');
-    const [showDownloadForm, setShowDownloadForm] = useState(false);
 
     const tabs = useMemo(() => {
         const baseTabs = [{ name: 'Dati anagrafici', path: `/anagrafica/${id}` }];
@@ -74,13 +72,6 @@ function AgendaNavbar(props: IProps) {
 
     return (
         <>
-            {showDownloadForm && (
-                <FormDownloadStoricoPopup
-                    message='Seleziona il periodo da scaricare'
-                    onClose={() => setShowDownloadForm(false)}
-                />
-            )}
-
             <div className='flex items-end justify-between mb-6'>
                 <h1 className='h1'>
                     {props.isCreating ? 'Nuova anagrafica' : (
@@ -126,7 +117,6 @@ function AgendaNavbar(props: IProps) {
                         <Link to={`/giornata/${id}/${todayStr()}`} className={`btn ${selectedAnagrafica?.IsArchiviato && ' disabled'}`}>
                             Giornata <MdEditDocument size={18} />
                         </Link>
-                        <button className='btn btn-sm btn-outline' onClick={() => setShowDownloadForm(true)}><MdDownload size={20} /></button>
                     </div>
                 )}
             </div>

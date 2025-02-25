@@ -11,7 +11,7 @@
   
     button {
         @apply w-full px-4 py-1 rounded-lg;
-        @apply bg-agenda_web_primary hover:bg-agenda_web_primary-dark text-white;
+        @apply bg-agenda_primary hover:bg-agenda_primary-dark text-white;
         @apply uppercase text-sm;
         @apply flex items-center justify-center gap-3;
     }
