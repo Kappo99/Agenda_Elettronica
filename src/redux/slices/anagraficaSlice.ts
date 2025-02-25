@@ -17,9 +17,10 @@ const initialState: AnagraficaState = {
       ...exampleAnagrafica,
       Id: 1,
       Nome: "KMsolution",
-      Cognome: "Srl",
+      Cognome: "Fornitore",
       CF: "KMSSRL80A01H501Z",
       DataNascita: "2022-06-30",
+      Residenza: "Busto Arsizio",
       Sesso: UserSex.MALE,
       IsEducatore: true,
       IsArchiviato: true,
@@ -29,8 +30,8 @@ const initialState: AnagraficaState = {
       Id: 2,
       Nome: "Mario",
       Cognome: "Rossi",
-      CF: "RSSMRA80A01H501Z",
-      DataNascita: "1980-01-01",
+      CF: "CFCFCF00C00F000C",
+      DataNascita: "2009-01-01",
       Sesso: UserSex.MALE,
       IsEducatore: false,
     },
@@ -39,10 +40,54 @@ const initialState: AnagraficaState = {
       Id: 3,
       Nome: "Anna",
       Cognome: "Verdi",
-      CF: "VRDNNA85B02F205Y",
-      DataNascita: "1985-02-02",
+      CF: "CFCFCF00C00F000C",
+      DataNascita: "2021-08-22",
+      Sesso: UserSex.FEMALE,
+      IsEducatore: false,
+    },
+    {
+      ...exampleAnagrafica,
+      Id: 4,
+      Nome: "Francesco Luigi",
+      Cognome: "Bianchi",
+      CF: "CFCFCF00C00F000C",
+      DataNascita: "2020-07-16",
+      Sesso: UserSex.MALE,
+      IsEducatore: false,
+    },
+
+    {
+      ...exampleAnagrafica,
+      Id: 5,
+      Nome: "Giorgia",
+      Cognome: "Rosa",
+      CF: "CFCFCF00C00F000C",
+      DataNascita: "1999-03-04",
       Sesso: UserSex.FEMALE,
       IsEducatore: true,
+    },
+
+    {
+      ...exampleAnagrafica,
+      Id: 6,
+      Nome: "Sogia",
+      Cognome: "Neri",
+      CF: "CFCFCF00C00F000C",
+      DataNascita: "2008-12-23",
+      Sesso: UserSex.FEMALE,
+      IsEducatore: false,
+      IsArchiviato: true,
+    },
+    {
+      ...exampleAnagrafica,
+      Id: 7,
+      Nome: "Luca",
+      Cognome: "Archivio",
+      CF: "CFCFCF00C00F000C",
+      DataNascita: "2006-04-18",
+      Sesso: UserSex.MALE,
+      IsEducatore: false,
+      IsArchiviato: true,
     },
   ],
   selectedAnagrafica: null,
@@ -80,7 +125,7 @@ const anagraficaSlice = createSlice({
       state,
       action: PayloadAction<{ id: number; newAnagrafica: IAnagrafica }>
     ) {
-      const index = state.anagrafiche.findIndex(
+      const index = initialState.anagrafiche.findIndex(
         (a) => a.Id === action.payload.id
       );
       if (index !== -1) {
@@ -88,18 +133,19 @@ const anagraficaSlice = createSlice({
       }
     },
     deleteAnagrafica(state, action: PayloadAction<number>) {
-      state.anagrafiche = state.anagrafiche.filter(
+      state.anagrafiche = initialState.anagrafiche.filter(
         (a) => a.Id !== action.payload
       );
     },
     archiveAnagrafica(state, action: PayloadAction<number>) {
-      const index = state.anagrafiche.findIndex((a) => a.Id === action.payload);
+      const index = initialState.anagrafiche.findIndex((a) => a.Id === action.payload);
       if (index !== -1) {
         state.anagrafiche[index].IsArchiviato = true;
       }
     },
     unarchiveAnagrafica(state, action: PayloadAction<number>) {
-      const index = state.anagrafiche.findIndex((a) => a.Id === action.payload);
+      const index = initialState.anagrafiche.findIndex((a) => a.Id === action.payload);
+      console.log(index);
       if (index !== -1) {
         state.anagrafiche[index].IsArchiviato = false;
       }

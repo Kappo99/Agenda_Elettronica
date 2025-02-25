@@ -14,13 +14,11 @@ const initialState: AccountState = {
     ...exampleAccount,
     Id: 1,
     Id_Anagrafica: 1,
-    Email: 'mail@kmsolution.it',
+    Email: 'maildiprova@kmsolution.it',
     Anagrafica: {
       ...exampleAnagrafica,
       Nome: 'KMsolution',
-      Cognome: 'Srl',
-      CF: 'KMSSRL80A01H501Z',
-      DataNascita: '2022-06-30',
+      Cognome: 'Fornitore',
     }
   },
   loading: false,

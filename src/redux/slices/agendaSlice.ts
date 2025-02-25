@@ -30,7 +30,7 @@ const agendaSlice = createSlice({
   initialState,
   reducers: {
     fetchAgenda(state, action: PayloadAction<string | undefined>) {
-      state.agenda = initialState.agenda; // TODO: get just limited data paginated and searched from initialState.agenda
+      state.agenda = initialState.agenda;
       // state.agenda = search(state.agenda, action.payload ?? "");
     },
     fetchGiornataByData(state, action: PayloadAction<string>) {

@@ -227,6 +227,8 @@ function Giornata() {
     }
 
     dispatch(createGiornata(formData));
+    setIsEditing(false);
+    dispatch(addNotification({ message: "Giornata salvata", type: MessageType.SUCCESS }));
   };
 
   return (

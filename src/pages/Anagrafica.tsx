@@ -94,6 +94,7 @@ function Anagrafica(props: IProps) {
             dispatch(updateAnagrafica({ id: Number(id), newAnagrafica: formData }));
             setIsEditing(false);
         }
+        dispatch(addNotification({ message: 'Anagrafica salvata', type: MessageType.SUCCESS }));
     };
 
     const handleDeleteConfirmClick = () => {
@@ -166,7 +167,7 @@ function Anagrafica(props: IProps) {
             dispatch(unarchiveAnagrafica(Number(id)));
             dispatch(addNotification({ message: 'Anagrafica ripristinata', type: MessageType.SUCCESS }));
             dispatch(hidePopup());
-            dispatch(fetchAnagraficaById(Number(id)));
+            // dispatch(fetchAnagraficaById(Number(id)));
         }
     };
 

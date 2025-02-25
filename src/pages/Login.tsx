@@ -15,7 +15,7 @@ function Login() {
     const dispatch = useAppDispatch();
     const { loading, error } = useAppSelector((state) => state.auth);
 
-    const [formData, setFormData] = useState({ Email: '', Password: '' });
+    const [formData, setFormData] = useState({ Email: 'maildiprova@kmsolution.it', Password: 'Password01!' });
     const [showPassword, setShowPassword] = useState(false);
     const [showFormForgotPassword, setShowFormForgotPassword] = useState(false);
 

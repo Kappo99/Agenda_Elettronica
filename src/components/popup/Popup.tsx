@@ -39,12 +39,12 @@ function Popup() {
 
                     {onConfirmId && (
                         <div className='w-full flex items-center justify-between gap-4'>
-                            <button className='btn'
+                            <button className={`btn btn-${type}`}
                                 onClick={() => dispatch(hidePopup())}
                             >
                                 Annulla <MdCancel size={18} />
                             </button>
-                            <button className='btn btn-primary'
+                            <button className={`btn btn-${type}`}
                                 onClick={() => executeCallback(onConfirmId)}
                             >
                                 Conferma <MdCheck size={18} />
