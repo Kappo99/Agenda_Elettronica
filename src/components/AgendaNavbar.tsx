@@ -113,7 +113,7 @@ function AgendaNavbar(props: IProps) {
 
                 {activeTab === 'Storico' && (
                     <div className='flex items-center gap-4'>
-                        <SearchBar value={props.searchTerm ?? ''} onChange={props.setSearchTerm ?? (() => { })} />
+                        {/* <SearchBar value={props.searchTerm ?? ''} onChange={props.setSearchTerm ?? (() => { })} /> */}
                         <Link to={`/giornata/${id}/${todayStr()}`} className={`btn ${selectedAnagrafica?.IsArchiviato && ' disabled'}`}>
                             Giornata <MdEditDocument size={18} />
                         </Link>

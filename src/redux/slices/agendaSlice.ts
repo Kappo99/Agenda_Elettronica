@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import IGiornata, { exampleGiornata } from '../../types/IGiornata';
-import { dateStr, todayStr } from '../../utils/functions';
+import { dateStr, search, todayStr } from '../../utils/functions';
 
 interface GiornataState {
   agenda: IGiornata[];
@@ -29,12 +29,13 @@ const agendaSlice = createSlice({
   name: 'agenda',
   initialState,
   reducers: {
-    fetchAgenda(state, action: PayloadAction<{ id: number, searchTerm?: string }>) {
+    fetchAgenda(state, action: PayloadAction<string | undefined>) {
       state.agenda = initialState.agenda; // TODO: get just limited data paginated and searched from initialState.agenda
+      // state.agenda = search(state.agenda, action.payload ?? "");
     },
-    fetchGiornataByData(state, action: PayloadAction<{ id: number, date: string }>) {
+    fetchGiornataByData(state, action: PayloadAction<string>) {
       state.loadingGiornata = false;
-      state.selectedGiornata = state.agenda.find((giornata) => giornata.Data === action.payload.date) || null;
+      state.selectedGiornata = state.agenda.find((giornata) => giornata.Data === action.payload) || null;
     },
     createGiornata(state, action: PayloadAction<IGiornata>) {
       state.loadingGiornata = false;

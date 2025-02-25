@@ -26,7 +26,6 @@ function Profilo() {
     }, []);
 
     useEffect(() => {
-        console.log('selectedAccount', selectedAccount);
         if (selectedAccount && !error) {
             setFormData(selectedAccount);
         }
@@ -76,22 +75,8 @@ function Profilo() {
             dispatch(addNotification({ message: "La nuova password non corrisponde con la conferma", type: MessageType.WARNING }));
             return;
         }
-        dispatch(updateAccount(formData))
-            .then((result) => {
-                if (updateAccount.fulfilled.match(result)) {
-                    setFormData({
-                        ...formData,
-                        Password: '',
-                        NewPassword: '',
-                        NewPasswordConfirm: '',
-                    });
-                    dispatch(addNotification({ message: "Password aggiornata", type: MessageType.SUCCESS }));
-                }
-                else {
-                    dispatch(addNotification({ message: "Errore durante l'aggiornamento", type: MessageType.ERROR }));
-                }
-            })
-            .catch(() => dispatch(addNotification({ message: "Errore durante l'aggiornamento", type: MessageType.ERROR })));
+        dispatch(updateAccount(formData));
+        dispatch(addNotification({ message: "Password aggiornata", type: MessageType.SUCCESS }));
     };
 
     return (

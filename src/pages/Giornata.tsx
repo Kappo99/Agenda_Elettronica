@@ -40,7 +40,7 @@ function Giornata() {
   useEffect(() => {
     setFormData(initialFormData);
     if (id && date) {
-      dispatch(fetchGiornataByData({ id: Number(id), date }));
+      dispatch(fetchGiornataByData(date));
     }
   }, [id, date, dispatch]);
 

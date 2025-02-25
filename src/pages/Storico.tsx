@@ -22,7 +22,7 @@ function Storico() {
 
 	useEffect(() => {
 		if (id) {
-			dispatch(fetchAgenda({ id: Number(id), searchTerm }));
+			dispatch(fetchAgenda(searchTerm));
 		}
 	}, [id, dispatch, searchTerm]);
 

@@ -1,6 +1,7 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import IAccount from '../../types/IAccount';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import IAccount, { exampleAccount } from '../../types/IAccount';
 import axiosInstance from '../../utils/axiosInstance';
+import { exampleAnagrafica } from '../../types/IAnagrafica';
 
 interface AccountState {
   selectedAccount: IAccount | null;
@@ -9,73 +10,37 @@ interface AccountState {
 }
 
 const initialState: AccountState = {
-  selectedAccount: null,
+  selectedAccount: {
+    ...exampleAccount,
+    Id: 1,
+    Id_Anagrafica: 1,
+    Email: 'mail@kmsolution.it',
+    Anagrafica: {
+      ...exampleAnagrafica,
+      Nome: 'KMsolution',
+      Cognome: 'Srl',
+      CF: 'KMSSRL80A01H501Z',
+      DataNascita: '2022-06-30',
+    }
+  },
   loading: false,
   error: null,
 };
 
-// Fetch a single account by id
-export const fetchAccount = createAsyncThunk(
-  'account/fetchAccount',
-  async (_, { rejectWithValue }) => {
-    try {
-      const response = await axiosInstance.get(`/account`);
-      return response.data;
-    }
-    catch (error: any) {
-      return rejectWithValue(error.response?.data?.message ?? 'Errore durante il recupero dell\'account');
-    }
-  }
-);
-
-// Update an existing account
-export const updateAccount = createAsyncThunk(
-  'account/updateAccount',
-  async (newAccount: IAccount, { rejectWithValue }
-  ) => {
-    try {
-      const response = await axiosInstance.put(`/account`, newAccount);
-      return response.data;
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message ?? 'Errore durante l\'aggiornamento dell\'account');
-    }
-  }
-);
-
 const accountSlice = createSlice({
   name: 'account',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      //* Fetch a single account by id
-      .addCase(fetchAccount.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchAccount.fulfilled, (state, action) => {
-        state.loading = false;
-        state.selectedAccount = action.payload;
-      })
-      .addCase(fetchAccount.rejected, (state, action) => {
-        state.loading = false;
-        state.selectedAccount = null;
-        state.error = action.payload as string || 'Failed to fetch the account';
-      })
-      //* Update an existing account
-      .addCase(updateAccount.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(updateAccount.fulfilled, (state, action) => {
-        state.loading = false;
-        // state.selectedAccount = action.payload;
-      })
-      .addCase(updateAccount.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string || 'Failed to update account';
-      });
+  reducers: {
+    fetchAccount(state, action: PayloadAction<string | undefined>) {
+      state.selectedAccount = initialState.selectedAccount;
+    },
+    updateAccount(state, action: PayloadAction<IAccount>) {
+      state.selectedAccount = action.payload;
+    },
   },
 });
-
+export const {
+  fetchAccount,
+  updateAccount,
+} = accountSlice.actions;
 export default accountSlice.reducer;

@@ -16,6 +16,17 @@ const initialState: AnagraficaState = {
     {
       ...exampleAnagrafica,
       Id: 1,
+      Nome: "KMsolution",
+      Cognome: "Srl",
+      CF: "KMSSRL80A01H501Z",
+      DataNascita: "2022-06-30",
+      Sesso: UserSex.MALE,
+      IsEducatore: true,
+      IsArchiviato: true,
+    },
+    {
+      ...exampleAnagrafica,
+      Id: 2,
       Nome: "Mario",
       Cognome: "Rossi",
       CF: "RSSMRA80A01H501Z",
@@ -25,7 +36,7 @@ const initialState: AnagraficaState = {
     },
     {
       ...exampleAnagrafica,
-      Id: 2,
+      Id: 3,
       Nome: "Anna",
       Cognome: "Verdi",
       CF: "VRDNNA85B02F205Y",
@@ -44,16 +55,20 @@ const anagraficaSlice = createSlice({
   initialState,
   reducers: {
     fetchAnagrafiche(state, action: PayloadAction<string | undefined>) {
-      state.anagrafiche = initialState.anagrafiche.filter((a) => !a.IsArchiviato);
+      state.anagrafiche = initialState.anagrafiche.filter(
+        (a) => !a.IsArchiviato
+      );
       state.anagrafiche = search(state.anagrafiche, action.payload ?? "");
     },
     fetchAnagraficheArchived(state, action: PayloadAction<string | undefined>) {
-      state.anagrafiche = initialState.anagrafiche.filter((a) => a.IsArchiviato);
+      state.anagrafiche = initialState.anagrafiche.filter(
+        (a) => a.IsArchiviato
+      );
       state.anagrafiche = search(state.anagrafiche, action.payload ?? "");
     },
     fetchAnagraficaById(state, action: PayloadAction<number>) {
       state.selectedAnagrafica =
-        state.anagrafiche.find((a) => a.Id === action.payload) || null;
+        initialState.anagrafiche.find((a) => a.Id === action.payload) || null;
     },
     createAnagrafica(state, action: PayloadAction<IAnagrafica>) {
       state.anagrafiche.push({
