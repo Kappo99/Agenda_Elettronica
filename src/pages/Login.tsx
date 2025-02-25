@@ -71,10 +71,10 @@ function Login() {
                         {!loading && (
                             <form action='' className='flex flex-col gap-4'>
                                 <div className='form-element'>
-                                    <input className='!text-base' type='email' name='Email' placeholder='Email' onChange={handleChange} />
+                                    <input className='!text-base' type='email' name='Email' placeholder='Email' value={formData.Email} onChange={handleChange} />
                                 </div>
                                 <div className='form-element relative'>
-                                    <input className='!text-base' type={showPassword ? 'text' : 'password'} name='Password' placeholder='Password' onChange={handleChange} />
+                                    <input className='!text-base' type={showPassword ? 'text' : 'password'} name='Password' placeholder='Password' value={formData.Password} onChange={handleChange} />
                                     <span className='absolute right-3 cursor-pointer' onClick={() => setShowPassword(!showPassword)}>
                                         {showPassword ? <FaEyeSlash /> : <FaEye />}
                                     </span>
