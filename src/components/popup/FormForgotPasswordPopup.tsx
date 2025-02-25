@@ -27,16 +27,9 @@ function FormForgotPasswordPopup(props: IProps) {
             return;
         }
 
-        dispatch(forgotPassword(email))
-            .then((result) => {
-                if (forgotPassword.fulfilled.match(result)) {
-                    dispatch(addNotification({ message: 'Email di reset password inviata, controlla la casella di posta', type: MessageType.SUCCESS }));
-                    props.onClose();
-                }
-            })
-            .catch((error) => {
-                dispatch(addNotification({ message: error || 'Errore durante la richiesta di reset password', type: MessageType.ERROR }));
-            });
+        dispatch(forgotPassword(email));
+        dispatch(addNotification({ message: 'Email di reset password inviata, controlla la casella di posta', type: MessageType.SUCCESS }));
+        props.onClose();
     }
 
     return (

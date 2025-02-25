@@ -70,9 +70,8 @@ function ResetPassword() {
             dispatch(addNotification({ message: 'La nuova password non corrisponde con la conferma', type: MessageType.WARNING }));
             return;
         }
-        dispatch(resetPassword({ token, newPassword: formData.NewPassword }))
-            .then((result) => resetPassword.fulfilled.match(result) && navigate('/login'))
-            .catch(() => dispatch(addNotification({ message: 'Errore durante l\'aggiornamento', type: MessageType.ERROR })));
+        dispatch(resetPassword({ token, Password: formData.NewPassword }));
+        navigate('/login');
     };
 
     return (

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import IGiornata, { exampleGiornata } from '../../types/IGiornata';
-import { dateStr, search, todayStr } from '../../utils/functions';
+import { dateStr, search } from '../../utils/functions';
 
 interface GiornataState {
   agenda: IGiornata[];

@@ -39,8 +39,8 @@ function Login() {
             return;
         }
 
-        dispatch(login(formData))
-            .then((result) => login.fulfilled.match(result) && navigate('/'));
+        dispatch(login(formData));
+        navigate('/');
     };
 
     return (
@@ -63,7 +63,7 @@ function Login() {
                     <div className='flex-1'>
 
                         <h1 className='h2 text-center mb-2'>Agenda Elettronica</h1>
-                        {/* <h3 className='h3 text-center mb-4 lg:mb-10'>Agenda Elettronica</h3> */}
+                        <h3 className='h3 text-center mb-4 lg:mb-10'>KMsolution</h3>
 
                         {loading && <Loading height='300px' />}
 

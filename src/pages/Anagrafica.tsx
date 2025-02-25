@@ -37,7 +37,7 @@ function Anagrafica(props: IProps) {
         if (id) {
             dispatch(fetchAnagraficaById(Number(id)));
         }
-    }, [id, dispatch, idAnagrafica]);
+    }, [id, dispatch]);
 
     useEffect(() => {
         if (selectedAnagrafica && !error && !props.isCreating) {
