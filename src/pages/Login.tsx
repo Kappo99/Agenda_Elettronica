@@ -63,7 +63,8 @@ function Login() {
                     <div className='flex-1'>
 
                         <h1 className='h2 text-center mb-2'>Agenda Elettronica</h1>
-                        <h3 className='h3 text-center mb-4 lg:mb-10'>KMsolution</h3>
+                        <h3 className='h3 text-center mb-4 lg:mb-6'>KMsolution</h3>
+                        <p className='text-center mb-4 italic'><b>NOTA:</b> Portale demo, qualsiasi email e password inserita sarà valida</p>
 
                         {loading && <Loading height='300px' />}
 
