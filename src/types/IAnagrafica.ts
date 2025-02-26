@@ -8,7 +8,7 @@ export default interface IAnagrafica {
     DataNascita: string;
     CF: string;
     Sesso: UserSex;
-    Residenza: string;
+    Residenza: string | null;
     Ingresso: string | null;
     IsArchiviato: boolean;
     Creation: string;
@@ -26,7 +26,7 @@ export const exampleAnagrafica: IAnagrafica = {
     DataNascita: '',
     CF: '',
     Sesso: UserSex.NONE,
-    Residenza: '',
+    Residenza: null,
     Ingresso: null,
     IsArchiviato: false,
     Creation: '',

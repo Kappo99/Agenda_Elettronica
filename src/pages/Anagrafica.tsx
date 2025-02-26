@@ -77,7 +77,7 @@ function Anagrafica(props: IProps) {
     };
 
     const handleSave = () => {
-        if (!formData.Nome || !formData.Cognome || !formData.DataNascita || !formData.CF || !formData.Residenza || formData.Sesso === UserSex.NONE /* || !formData.Ingresso */) {
+        if (!formData.Nome || !formData.Cognome || !formData.DataNascita || !formData.CF /* || !formData.Residenza */ || formData.Sesso === UserSex.NONE /* || !formData.Ingresso */) {
             dispatch(addNotification({ message: 'Compilare tutti i campi', type: MessageType.WARNING }));
             return;
         }
@@ -220,7 +220,7 @@ function Anagrafica(props: IProps) {
 
                             <div className='form-element !grid !grid-cols-4 gap-4'>
                                 <label htmlFor='residenza'>Residenza</label>
-                                <input type='text' id='residenza' name='Residenza' className='col-span-3' disabled={!isEditing} value={formData.Residenza} onChange={handleChange} />
+                                <input type='text' id='residenza' name='Residenza' className='col-span-3' disabled={!isEditing} value={formData.Residenza ?? ""} onChange={handleChange} placeholder='(Opzionale)' />
                             </div>
 
                             <div className='form-element !grid !grid-cols-4 gap-4'>
@@ -235,7 +235,7 @@ function Anagrafica(props: IProps) {
 
                             {!selectedAnagrafica?.IsEducatore && (<div className='form-element !grid !grid-cols-4 gap-4'>
                                 <label htmlFor='ingresso'>Ingresso</label>
-                                <input type='text' id='ingresso' name='Ingresso' className='col-span-3' disabled={!isEditing} value={formData.Ingresso || ''} onChange={handleChange} placeholder='(Opzionale)' />
+                                <input type='text' id='ingresso' name='Ingresso' className='col-span-3' disabled={!isEditing} value={formData.Ingresso ?? ""} onChange={handleChange} placeholder='(Opzionale)' />
                             </div>)}
 
                         </section>
