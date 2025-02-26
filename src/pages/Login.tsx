@@ -54,17 +54,20 @@ function Login() {
 
             <div className='fixed top-0 left-0 w-screen h-svh bg-agenda_primary flex items-center justify-center'>
 
-                <div className='container w-full max-w-5xl p-10 lg:p-32 mx-6 bg-white rounded-2xl flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-32'>
+                <div className='container w-full max-w-5xl p-10 lg:p-32 mx-6 bg-white rounded-2xl grid grid-cols-1 lg:grid-cols-5 items-center justify-center gap-10 lg:gap-32'>
 
-                    <div className='flex-1'>
+                    <div className='col-span-1 lg:col-span-2'>
                         <img className='w-full h-full' src={KMsolution} alt='Agenda Elettronica' />
                     </div>
 
-                    <div className='flex-1'>
+                    <div className='col-span-1 lg:col-span-3'>
 
                         <h1 className='h2 text-center mb-2'>Agenda Elettronica</h1>
-                        <h3 className='h3 text-center mb-4 lg:mb-6'>KMsolution</h3>
-                        <p className='text-center mb-4 italic'><b>NOTA:</b> Portale demo, qualsiasi email e password inserita sarà valida</p>
+                        <h3 className='h3 text-center mb-4 lg:mb-6'>Daily Care</h3>
+                        <p className='text-center mb-4 italic'>
+                            <b>NOTA:</b> Versione dimostrativa. I dati inseriti o cancellati non verranno memorizzati 
+                            una volta usciti da ogni schermata
+                        </p>
 
                         {loading && <Loading height='300px' />}
 
