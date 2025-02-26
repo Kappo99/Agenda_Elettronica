@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import AgendaNavbar from "../components/AgendaNavbar";
 import { MdDelete, MdDownload } from "react-icons/md";
 import { FaFileSignature } from "react-icons/fa6";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { deleteGiornata, fetchAgenda } from "../redux/slices/agendaSlice";
 import Loading from "../components/utils/Loading";
@@ -15,6 +15,7 @@ import { usePopup } from "../context/PopupContext";
 function Storico() {
   const { id } = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const {
     agenda,
     loadingGiornata: loading,
@@ -91,7 +92,7 @@ function Storico() {
           {!loading &&
             !error &&
             agenda.map((giornata, index) => (
-              <tr key={index}>
+              <tr key={index} className="hover:bg-gray-200 cursor-pointer" onClick={() => navigate(`/giornata/${id}/${giornata.Data}`)}>
                 <td>{giornata.Data}</td>
                 <td>
                   {giornata.Sonno?.Sveglia != null ? "✅" : "❌"} |{" "}
@@ -121,7 +122,7 @@ function Storico() {
                     .substring(0, 35)
                     .concat("...")}
                 </td>
-                <td className="flex justify-center gap-2">
+                <td className="flex justify-center gap-2" onClick={(e) => e.stopPropagation()}>
                   <button>
                     <Link
                       className="btn btn-sm btn-primary"
