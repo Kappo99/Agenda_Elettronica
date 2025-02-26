@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { login } from '../redux/slices/authSlice';
-import KMsolution from '../images/KMsolution_black.svg';
+import KMsolution from '../images/KMsolution.png';
 import { isValidEmail } from '../utils/functions';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import FormForgotPasswordPopup from '../components/popup/FormForgotPasswordPopup';
