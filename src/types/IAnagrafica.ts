@@ -1,8 +1,9 @@
-import { UserSex } from ".";
+import { Role, UserSex } from ".";
 import IDocumento from "./IDocumento";
 
 export default interface IAnagrafica {
     Id: number;
+    Id_Famiglia: number;
     Nome: string;
     Cognome: string;
     DataNascita: string;
@@ -10,6 +11,7 @@ export default interface IAnagrafica {
     Sesso: UserSex;
     Residenza: string | null;
     Ingresso: string | null;
+    Ruolo: Role;
     IsArchiviato: boolean;
     Creation: string;
     Timestamp: string;
@@ -21,6 +23,7 @@ export default interface IAnagrafica {
 
 export const exampleAnagrafica: IAnagrafica = {
     Id: 0,
+    Id_Famiglia: 0,
     Nome: '',
     Cognome: '',
     DataNascita: '',
@@ -28,6 +31,7 @@ export const exampleAnagrafica: IAnagrafica = {
     Sesso: UserSex.NONE,
     Residenza: null,
     Ingresso: null,
+    Ruolo: Role.GENITORE,
     IsArchiviato: false,
     Creation: '',
     Timestamp: '',

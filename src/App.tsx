@@ -19,6 +19,7 @@ import Notifications from './components/utils/Notifications';
 import { removeNotification } from './redux/slices/notificationSlice';
 import { PopupProvider } from './context/PopupContext';
 import Popup from './components/popup/Popup';
+import Famiglia from './pages/Famiglia';
 
 function AppProviders({ children }: { children: React.ReactNode }) {
   return (
@@ -85,6 +86,16 @@ function AppRoutes() {
         <Route path="/anagrafica" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
             <Anagrafica isCreating />
+          </ProtectedRoute>
+        } />
+        <Route path="/famiglia/:id" element={
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
+            <Famiglia />
+          </ProtectedRoute>
+        } />
+        <Route path="/famiglia" element={
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
+            <Famiglia isCreating />
           </ProtectedRoute>
         } />
         <Route path="/profilo" element={

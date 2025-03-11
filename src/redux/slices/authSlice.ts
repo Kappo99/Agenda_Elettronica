@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface AuthState {
   token: string | null;
-  // idAccount: number | null;
+  idFamiglia: number | null;
   idAnagrafica: number | null;
   email: string | null;
   loading: boolean;
@@ -11,7 +11,7 @@ interface AuthState {
 
 const initialState: AuthState = {
   token: localStorage.getItem('AgendaElettronica_authToken') || null,
-  // idAccount: Number(localStorage.getItem('AgendaElettronica_idAccount')) || null,
+  idFamiglia: 1,
   idAnagrafica: 1,
   email: localStorage.getItem('AgendaElettronica_email') || null,
   loading: false,

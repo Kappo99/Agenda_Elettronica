@@ -70,7 +70,7 @@ const initialState: AnagraficaState = {
     {
       ...exampleAnagrafica,
       Id: 6,
-      Nome: "Sogia",
+      Nome: "Sofia",
       Cognome: "Neri",
       CF: "CFCFCF00C00F000C",
       DataNascita: "2008-12-23",

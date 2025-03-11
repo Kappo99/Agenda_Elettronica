@@ -26,12 +26,26 @@ function AgendaNavbar(props: IProps) {
     const [activeTab, setActiveTab] = useState('Storico');
 
     const tabs = useMemo(() => {
-        const baseTabs = [{ name: 'Dati anagrafici', path: `/anagrafica/${id}` }];
+        let baseTabs = [
+            { name: 'Dati anagrafici', path: `/anagrafica/${id}` },
+        ];
+        const userTabs = [
+            { name: 'Giornata', path: `/giornata/${id}/${todayStr()}` },
+            { name: 'Storico', path: `/storico/${id}` },
+        ];
+        const famigliaTabs = [
+            { name: 'Famiglia', path: `/famiglia/${id}` },
+        ];
 
+        if (Number(id) <= 6) {
+            baseTabs = [
+                ...famigliaTabs,
+                ...baseTabs,
+            ]
+        }
         if (!selectedAnagrafica?.IsEducatore) { // sostituisci 'condizione' con la tua condizione
             return [
-                { name: 'Giornata', path: `/giornata/${id}/${todayStr()}` },
-                { name: 'Storico', path: `/storico/${id}` },
+                ...userTabs,
                 ...baseTabs,
             ];
         }

@@ -12,6 +12,11 @@ export enum UserSex {
     FEMALE = 'F',
 }
 
+export enum Role {
+    GENITORE = 'Genitore',
+    FIGLIO = 'Figlio/a',
+}
+
 export enum MessageType {
     SUCCESS = 'success',
     ERROR = 'error',

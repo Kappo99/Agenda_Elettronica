@@ -10,6 +10,7 @@ interface IProps {
     message: string;
     show: boolean;
     onClose: () => void;
+    idAnagrafica?: number | null;
 }
 
 function FormUploadFilePopup(props: IProps) {
@@ -31,8 +32,8 @@ function FormUploadFilePopup(props: IProps) {
             return;
         }
 
-        if (id) {
-            dispatch(uploadDocumento({ idAnagrafica: Number(id), name }));
+        if (props.idAnagrafica || id) {
+            dispatch(uploadDocumento({ idAnagrafica: props.idAnagrafica ?? Number(id), name }));
             dispatch(addNotification({ message: 'Documento caricato', type: MessageType.SUCCESS }));
             setName('');
             setFile(null);
