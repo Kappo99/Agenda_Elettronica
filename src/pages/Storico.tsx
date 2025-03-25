@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AgendaNavbar from "../components/AgendaNavbar";
 import { MdDelete, MdDownload } from "react-icons/md";
-import { FaFileSignature } from "react-icons/fa6";
+import { FaFileSignature, FaRegStar, FaStar } from "react-icons/fa6";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { deleteGiornata, fetchAgenda } from "../redux/slices/agendaSlice";
@@ -24,12 +24,13 @@ function Storico() {
   const { registerCallback } = usePopup();
 
   const [searchTerm, setSearchTerm] = useState("");
+	const [favoritesOnly, setFavoritesOnly] = useState(false);
 
   useEffect(() => {
     if (id) {
-      dispatch(fetchAgenda(searchTerm));
+      dispatch(fetchAgenda(/* searchTerm , */favoritesOnly));
     }
-  }, [id, dispatch, searchTerm]);
+  }, [id, dispatch, searchTerm, favoritesOnly]);
 
   useEffect(() => {
     if (
@@ -79,6 +80,13 @@ function Storico() {
             <th>Sonno</th>
             <th>Uscita</th>
             <th>Fatti significativi</th>
+						<th>
+							<div className='flex justify-center'>
+								<button className='btn btn-sm' onClick={() => setFavoritesOnly(!favoritesOnly)}>
+									<FaStar />
+								</button>
+							</div>
+						</th>
             <th></th>
           </tr>
         </thead>
@@ -121,6 +129,15 @@ function Storico() {
                     )
                     .substring(0, 35)
                     .concat("...")}
+                </td>
+                <td>
+                  <div className='flex justify-center'>
+                    {giornata.FattiSignificativi.IsPreferito ? (
+                      <FaStar size={24} className='text-yellow-500' />
+                    ) : (
+                      <FaRegStar size={24} className='text-yellow-500' />
+                    )}
+                  </div>
                 </td>
                 <td className="flex justify-center gap-2" onClick={(e) => e.stopPropagation()}>
                   <button>

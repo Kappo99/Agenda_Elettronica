@@ -4,6 +4,7 @@ export default interface IFattoSignificativo {
     Mattina: string | null;
     Pomeriggio: string | null;
     Sera: string | null;
+    IsPreferito: boolean;
     Creation: string;
     Timestamp: string;
 }
@@ -14,6 +15,7 @@ export const exampleFattoSignificativo: IFattoSignificativo = {
     Mattina: null,
     Pomeriggio: null,
     Sera: null,
+    IsPreferito: false,
     Creation: '',
     Timestamp: '',
 };

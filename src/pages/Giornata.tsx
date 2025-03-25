@@ -16,6 +16,7 @@ import { fetchAnagraficaById } from "../redux/slices/anagraficaSlice";
 import { addNotification } from "../redux/slices/notificationSlice";
 import { MessageType, UscitaType } from "../types";
 import IUscita, { exampleUscita } from "../types/IUscita";
+import { FaRegStar, FaStar } from "react-icons/fa6";
 
 function Giornata() {
   const navigate = useNavigate();
@@ -198,6 +199,16 @@ function Giornata() {
       updatedUscite[index] = { ...updatedUscite[index], [field]: value };
       return { ...prevData, Uscite: updatedUscite };
     });
+  };
+
+  const handleIsPreferitoChange = () => {
+    setFormData((prevData) => ({
+      ...prevData,
+      FattiSignificativi: {
+        ...prevData.FattiSignificativi,
+        IsPreferito: !prevData.FattiSignificativi.IsPreferito,
+      },
+    }));
   };
 
   const handleSave = () => {
@@ -840,7 +851,23 @@ function Giornata() {
             id="fatti-significativi"
             className="bg-white border border-gray-300 rounded-2xl shadow-md p-6 pb-8 -mt-2 relative z-[99]"
           >
-            <h2 className="h2 mb-4">Fatti significativi</h2>
+            <div className="w-full flex items-center justify-between gap-10">
+              <h2 className="h2 mb-4">Fatti significativi</h2>
+              <div
+                className={`${
+                  !isEditing || selectedAnagrafica?.IsArchiviato
+                    ? "pointer-events-none"
+                    : "cursor-pointer"
+                }`}
+                onClick={handleIsPreferitoChange}
+              >
+                {formData.FattiSignificativi.IsPreferito ? (
+                  <FaStar size={24} className="text-yellow-500" />
+                ) : (
+                  <FaRegStar size={24} className="text-yellow-500" />
+                )}
+              </div>
+            </div>
             <div className="grid grid-cols-3 gap-x-10 gap-y-4">
               <div className="col-span-3">
                 <div className="form-element flex-col !items-start !gap-2">

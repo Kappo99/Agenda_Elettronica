@@ -143,6 +143,7 @@ const initialState: GiornataState = {
       FattiSignificativi: {
         ...exampleFattoSignificativo,
         Sera: 'Fatica ad addormentarsi',
+        IsPreferito: true,
       },
     },
     {
@@ -272,6 +273,7 @@ const initialState: GiornataState = {
       FattiSignificativi: {
         ...exampleFattoSignificativo,
         Sera: 'Fatica ad addormentarsi',
+        IsPreferito: true,
       },
     },
     {
@@ -598,6 +600,7 @@ const initialState: GiornataState = {
         ...exampleFattoSignificativo,
         Mattina: 'Risveglio tranquillo',
         Pomeriggio: 'Gioca con voglia',
+        IsPreferito: true,
       },
     },
     {
@@ -716,8 +719,10 @@ const agendaSlice = createSlice({
   name: 'agenda',
   initialState,
   reducers: {
-    fetchAgenda(state, action: PayloadAction<string | undefined>) {
+    fetchAgenda(state, action: PayloadAction<boolean | undefined>) {
       state.agenda = initialState.agenda;
+      if (action.payload)
+        state.agenda = state.agenda.filter((giornata) => giornata.FattiSignificativi.IsPreferito);
       // state.agenda = search(state.agenda, action.payload ?? "");
     },
     fetchGiornataByData(state, action: PayloadAction<string>) {

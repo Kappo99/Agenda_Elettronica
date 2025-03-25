@@ -89,17 +89,6 @@ function AgendaNavbar(props: IProps) {
     <>
       <div className="flex items-end justify-between mb-6">
         <h1 className="h1">
-          {/* {props.isFamiglia
-            ? props.isCreating
-              ? "Nuova anagrafica"
-              : selectedAnagrafica
-              ? `${selectedAnagrafica.Nome} ${selectedAnagrafica.Cognome}`
-              : "Caricamento..."
-            : props.isCreating
-            ? "Nuova famiglia"
-            : selectedAnagrafica
-            ? `${selectedAnagrafica.Nome} ${selectedAnagrafica.Cognome}`
-            : "Caricamento..."} */}
           {props.isCreating
             ? `Nuova ${props.isFamiglia ? "famiglia" : "anagrafica"}`
             : props.isFamiglia
