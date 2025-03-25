@@ -192,7 +192,7 @@ function Anagrafica(props: IProps) {
 
             {(!loading && !loadingDoc) && (selectedAnagrafica || props.isCreating) && (
                 <>
-                    <AgendaNavbar isCreating={props.isCreating} />
+                    <AgendaNavbar isFamiglia={false} isCreating={props.isCreating} />
 
                     <div className='grid grid-cols-11 gap-10'>
 

@@ -34,11 +34,11 @@ function Notifications({ notifications, removeNotification }: IProps) {
     }, [notifications, removeNotification]);
 
     return (
-        <div className="fixed bottom-6 right-6 flex flex-col gap-2 z-[500] max-w-lg">
+        <div className="fixed bottom-6 right-6 flex flex-col items-end gap-2 z-[500] max-w-lg">
             {notifications.map(({ id, message, type }) => (
                 <div
                     key={id}
-                    className={`p-4 rounded-lg shadow-lg flex items-center gap-2 bg-white border font-medium`}
+                    className={`w-fit p-4 rounded-lg shadow-lg flex items-center gap-2 bg-white border font-medium`}
                 >
                     <div>{icons[type]}</div>
                     {message}

@@ -244,7 +244,7 @@ function Famiglia(props: IProps) {
 
             {(!loadingFamiglia && !loadingDoc) && (selectedFamiglia || props.isCreating) && (
                 <>
-                    <AgendaNavbar isCreating={props.isCreating} />
+                    <AgendaNavbar isFamiglia={true} isCreating={props.isCreating} />
 
                     <div className='grid grid-cols-11 gap-10'>
 
