@@ -6,6 +6,7 @@ import { fetchAnagraficaById } from "../redux/slices/anagraficaSlice";
 import { todayStr } from "../utils/functions";
 import SearchBar from "./utils/SearchBar";
 import { fetchFamigliaById } from "../redux/slices/famigliaSlice";
+import FormDownloadStoricoPopup from "./popup/FormDownloadStoricoPopup";
 
 interface IProps {
   isFamiglia?: boolean;
@@ -27,6 +28,7 @@ function AgendaNavbar(props: IProps) {
   const location = useLocation();
 
   const [activeTab, setActiveTab] = useState("Storico");
+  const [showDownloadForm, setShowDownloadForm] = useState(false);
 
   const tabs = useMemo(() => {
     let baseTabs = [{ name: "Dati anagrafici", path: `/anagrafica/${id}` }];
@@ -87,6 +89,13 @@ function AgendaNavbar(props: IProps) {
 
   return (
     <>
+      {showDownloadForm && (
+          <FormDownloadStoricoPopup
+              message='Seleziona il periodo da scaricare'
+              onClose={() => setShowDownloadForm(false)}
+          />
+      )}
+
       <div className="flex items-end justify-between mb-6">
         <h1 className="h1">
           {props.isCreating
@@ -170,6 +179,7 @@ function AgendaNavbar(props: IProps) {
             >
               Giornata <MdEditDocument size={18} />
             </Link>
+            <button className='btn btn-sm btn-outline' onClick={() => setShowDownloadForm(true)}><MdDownload size={20} /></button>
           </div>
         )}
       </div>
