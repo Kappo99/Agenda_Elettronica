@@ -211,7 +211,6 @@ const initialState: AnagraficaState = {
       DataNascita: "1998-02-19",
       Sesso: UserSex.MALE,
       IsEducatore: true,
-      IsArchiviato: true,
     },
     {
       ...exampleAnagrafica,
