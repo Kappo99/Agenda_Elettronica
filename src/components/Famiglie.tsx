@@ -76,8 +76,8 @@ function Famiglie({ isArchived }: IProps) {
                                 </table>
                             </div>
                             <div className='w-full flex items-center justify-between gap-3 px-10'>
-                                <Link className='btn' to={`/giornata/${famiglia.Id}/${todayStr()}`}><BsCalendarCheckFill size={18} /></Link>
-                                <Link className='btn' to={`/storico/${famiglia.Id}`}><FaClipboardList size={18} /></Link>
+                                <Link className='btn' to={`/famiglia/giornata/${famiglia.Id}/${todayStr()}`}><BsCalendarCheckFill size={18} /></Link>
+                                <Link className='btn' to={`/famiglia/storico/${famiglia.Id}`}><FaClipboardList size={18} /></Link>
                                 <Link className='btn' to={`/famiglia/${famiglia.Id}`}><FaAddressCard size={18} /></Link>
                             </div>
                         </div>

@@ -40,7 +40,7 @@ function Anagrafiche({ isArchived }: IProps) {
     }, [error]);
 
     const handleRowClick = (id: number, isEducatore: boolean = false) => {
-        navigate(isEducatore || isArchived ? `/anagrafica/${id}` : `/giornata/${id}/${todayStr()}`);
+        navigate(isEducatore || isArchived ? `/anagrafica/${id}` : `/anagrafica/giornata/${id}/${todayStr()}`);
     };
 
     return (

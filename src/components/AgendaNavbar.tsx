@@ -20,6 +20,7 @@ interface IProps {
 
 function AgendaNavbar(props: IProps) {
   const { id } = useParams<{ id: string }>();
+  const { str } = useParams<{ str: string }>();
   const { date } = useParams<{ date: string }>();
   const { selectedAnagrafica } = useAppSelector((state) => state.anagrafica);
   const { selectedFamiglia } = useAppSelector((state) => state.famiglia);
@@ -30,30 +31,27 @@ function AgendaNavbar(props: IProps) {
   const [activeTab, setActiveTab] = useState("Storico");
   const [showDownloadForm, setShowDownloadForm] = useState(false);
 
-  const tabs = useMemo(() => {
-    let baseTabs = [{ name: "Dati anagrafici", path: `/anagrafica/${id}` }];
-    const userTabs = [
-      { name: "Giornata", path: `/giornata/${id}/${todayStr()}` },
-      { name: "Storico", path: `/storico/${id}` },
-    ];
-    const famigliaTabs = [{ name: "Famiglia", path: `/famiglia/${id}` }];
+  const isFamiglia = props.isFamiglia || location.pathname.includes("/famiglia");
 
-    if (Number(id) <= 6) {
-      baseTabs = [...famigliaTabs, ...baseTabs];
-    }
-    if (!selectedAnagrafica?.IsEducatore) {
-      // sostituisci 'condizione' con la tua condizione
+  const tabs = useMemo(() => {
+    const anagraficaTabs = [{ name: "Dati anagrafici", path: `/anagrafica/${id}` }];
+    const famigliaTabs = [{ name: "Famiglia", path: `/famiglia/${id}` }];
+    const userTabs = [
+      { name: "Giornata", path: `/${str ?? (isFamiglia ? "famiglia" : "anagrafica")}/giornata/${id}/${todayStr()}` },
+      { name: "Storico", path: `/${str ?? (isFamiglia ? "famiglia" : "anagrafica")}/storico/${id}` },
+    ];
+    const baseTabs = isFamiglia ? famigliaTabs : anagraficaTabs;
+
+    if (isFamiglia || !selectedAnagrafica?.IsEducatore) {
       return [...userTabs, ...baseTabs];
     }
 
     return baseTabs;
-  }, [id, selectedAnagrafica]);
+  }, [id, str, isFamiglia, selectedAnagrafica]);
 
   // Imposto l'activeTab in base alla rotta corrente
   useEffect(() => {
-    // Ottieni la prima parte della rotta (ad esempio '/giornata', '/storico')
-    const currentPath = location.pathname.split("/")[1];
-    const matchedTab = tabs.find((tab) => tab.path.includes(currentPath));
+    const matchedTab = tabs.find((tab) => tab.path.includes(location.pathname));
 
     if (matchedTab) {
       setActiveTab(matchedTab.name);
@@ -99,8 +97,8 @@ function AgendaNavbar(props: IProps) {
       <div className="flex items-end justify-between mb-6">
         <h1 className="h1">
           {props.isCreating
-            ? `Nuova ${props.isFamiglia ? "famiglia" : "anagrafica"}`
-            : props.isFamiglia
+            ? `Nuova ${isFamiglia ? "famiglia" : "anagrafica"}`
+            : isFamiglia
 							? selectedFamiglia
 								? `${selectedFamiglia.Cognome}`
 								: "Caricamento..."

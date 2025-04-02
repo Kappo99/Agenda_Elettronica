@@ -68,12 +68,12 @@ function AppRoutes() {
             <Archivio />
           </ProtectedRoute>
         } />
-        <Route path="/giornata/:id/:date" element={
+        <Route path="/:str/giornata/:id/:date" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
             <Giornata />
           </ProtectedRoute>
         } />
-        <Route path="/storico/:id" element={
+        <Route path="/:str/storico/:id" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
             <Storico />
           </ProtectedRoute>
