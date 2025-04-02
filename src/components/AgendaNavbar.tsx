@@ -59,18 +59,18 @@ function AgendaNavbar(props: IProps) {
   }, [location.pathname, tabs]);
 
   useEffect(() => {
-    if (!selectedAnagrafica && id) {
+    if (id && selectedAnagrafica?.Id !== Number(id)) {
       // Effettua la fetch solo se non esiste già un'anagrafica selezionata
       dispatch(fetchAnagraficaById(Number(id)));
     }
-  }, [selectedAnagrafica, id, dispatch]);
+  }, [id, selectedAnagrafica, dispatch]);
 
   useEffect(() => {
-    if (!selectedFamiglia && id) {
+    if (id && selectedFamiglia?.Id !== Number(id)) {
       // Effettua la fetch solo se non esiste già un'anagrafica selezionata
       dispatch(fetchFamigliaById(Number(id)));
     }
-  }, [selectedFamiglia, id, dispatch]);
+  }, [id, selectedFamiglia, dispatch]);
 
   const handleSave = () => {
     if (props.handleSave) {
