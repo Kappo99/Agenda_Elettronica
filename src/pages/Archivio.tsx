@@ -8,7 +8,7 @@ function Archivio() {
   return (
     <>
       <div className="container mb-4">
-        <button className="btn mx-auto" onClick={() => setIsFamiglie(!isFamiglie)}>Cambia visualizzazione famiglie / anagrafiche</button>
+        <button className="btn mx-auto" onClick={() => setIsFamiglie(!isFamiglie)}>Visualizzazione famiglie / anagrafiche</button>
       </div>
 
       {isFamiglie ? <Famiglie isArchived /> : <Anagrafiche isArchived />}

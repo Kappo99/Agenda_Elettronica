@@ -194,9 +194,9 @@ function Anagrafica(props: IProps) {
                 <>
                     <AgendaNavbar isFamiglia={false} isCreating={props.isCreating} />
 
-                    <div className='grid grid-cols-11 gap-10'>
+                    <div className='grid grid-cols-1 lg:grid-cols-11 gap-0 lg:gap-10 mb-10 lg:mb-0'>
 
-                        <section className='col-span-6 xl:col-span-7 flex flex-col gap-4 bg-white border border-gray-300 rounded-2xl rounded-tl-none shadow-md p-6'>
+                        <section className='col-span-1 lg:col-span-6 xl:col-span-7 flex flex-col gap-4 bg-white border border-gray-300 rounded-2xl rounded-tl-none shadow-md p-6'>
 
                             <div className='form-element !grid !grid-cols-4 gap-4'>
                                 <label htmlFor='nome'>Nome</label>
@@ -240,9 +240,9 @@ function Anagrafica(props: IProps) {
 
                         </section>
 
-                        <section className={`col-span-5 xl:col-span-4 ${props.isCreating ? 'bg-gray-200' : 'bg-white'} border border-gray-300 rounded-2xl rounded-tr-none shadow-md p-6`}>
+                        <section className={`col-span-1 lg:col-span-5 xl:col-span-4 ${props.isCreating ? 'bg-gray-200' : 'bg-white'} border border-gray-300 rounded-2xl lg:rounded-tr-none shadow-md p-6`}>
 
-                            <div className='flex items-center justify-between mb-4'>
+                            <div className='flex flex-col lg:flex-row lg:items-center justify-between gap-y-3 mb-4'>
                                 <h2 className='h2'>Documenti</h2>
                                 <button className='btn' disabled={isEditing || isDisabled} onClick={() => setShowUploadDoc(true)}>Carica <MdUploadFile size={16} /></button>
                             </div>
@@ -284,7 +284,7 @@ function Anagrafica(props: IProps) {
 
                     </div>
 
-                    <div className='flex items-center justify-between mt-8'>
+                    <div className='flex flex-col lg:flex-row items-center justify-between gap-y-4 mt-8'>
 
                         <div className='flex-1'>
                             {isEditing ? (
@@ -297,7 +297,7 @@ function Anagrafica(props: IProps) {
                             )}
                         </div>
 
-                        <div className='flex-1 flex justify-center'>
+                        <div className='flex-1 flex lg:justify-center'>
                             {!props.isCreating && selectedAnagrafica?.IsArchiviato ? (
                                 <div className="flex items-center gap-4">
                                     <button className='btn btn-lg' onClick={handleUnarchive}>Ripristina <MdOutlineRestorePage size={20} /></button>
@@ -307,7 +307,7 @@ function Anagrafica(props: IProps) {
                             )}
                         </div>
 
-                        <div className='flex-1 flex justify-end'>
+                        <div className='flex-1 flex lg:justify-end'>
                             <button className='btn btn-lg btn-danger' disabled={isEditing || (selectedAnagrafica?.IsEducatore && selectedAnagrafica?.Id !== idAnagrafica)} onClick={handleDeleteConfirmClick}>Elimina <MdDelete size={20} /></button>
                         </div>
                     </div>

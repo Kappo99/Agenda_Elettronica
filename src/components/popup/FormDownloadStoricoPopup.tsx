@@ -39,8 +39,8 @@ function FormUploadFilePopup(props: IProps) {
 
     return (
         <>
-            <div className='fixed inset-0 flex items-center justify-center bg-black/50 z-[900]'>
-                <div className='bg-white rounded-2xl shadow-lg'>
+            <div className='fixed inset-0 flex items-center justify-center bg-black/50 z-[999]'>
+                <div className='max-w-96 mx-10 lg:mx-0 bg-white rounded-2xl shadow-lg'>
                     <div className={`w-full h-14 bg-gray-300 rounded-t-2xl relative`}>
                         <button className='absolute top-4 right-4 text-black'>
                             <MdClose size={24} onClick={props.onClose} />

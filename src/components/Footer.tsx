@@ -12,7 +12,7 @@ function Footer() {
 
             <div className='container w-full py-5 lg:py-8'>
 
-                <div className='flex flex-col md:flex-row items-center justify-around gap-y-2'>
+                <div className='flex flex-col md:flex-row items-center justify-around gap-y-4'>
 
                     <span className='credits'>&copy; {(new Date().getFullYear())} - Tutti i diritti riservati</span>
 

@@ -46,63 +46,65 @@ function Anagrafiche({ isArchived }: IProps) {
     return (
         <div className='container'>
 
-            <div className='grid grid-cols-2 items-center mb-6 gap-6'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 items-center mb-6 gap-6'>
                 <div className='col-span-1'>
                     <h1 className='h1'>Anagrafiche {isArchived && 'archiviate'}</h1>
                 </div>
-                <div className='col-span-1 flex items-center gap-5'>
+                <div className='col-span-1 flex flex-col lg:flex-row lg:items-center gap-5'>
                     <SearchBar value={searchTerm} onChange={setSearchTerm} />
                     <Link className={`btn ${isArchived && 'disabled'}`} to={'/anagrafica'}>Nuova <MdAdd size={18} /></Link>
                 </div>
             </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Cognome</th>
-                        <th>Nome</th>
-                        <th>Codice Fiscale</th>
-                        <th>Data Nascita</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {loading && (
+            <div className="overflow-x-auto">
+                <table className="min-w-full">
+                    <thead>
                         <tr>
-                            <td colSpan={6}>
-                                {loading && <Loading />}
-                            </td>
+                            <th></th>
+                            <th>Cognome</th>
+                            <th>Nome</th>
+                            <th>Codice Fiscale</th>
+                            <th>Data Nascita</th>
+                            <th></th>
                         </tr>
-                    )}
-                    {!loading && !error && anagrafiche.map((anagrafica) => (
-                        <tr key={anagrafica.Id}
-                            className='hover:bg-gray-200 cursor-pointer'
-                            onClick={() => handleRowClick(anagrafica.Id, anagrafica.IsEducatore)}
-                        >
-                            <td className='text-xl'>
-                                {anagrafica.IsEducatore ?
-                                    '🎓' :
-                                    (anagrafica.Sesso === UserSex.MALE ? '👦🏻' : '👧🏻')}
-                            </td>
-                            <td>{anagrafica.Cognome}</td>
-                            <td>{anagrafica.Nome}</td>
-                            <td>{anagrafica.CF}</td>
-                            <td>{anagrafica.DataNascita}</td>
-                            <td>
-                                <button className='btn btn-sm !p-0' onClick={(e) => e.stopPropagation()}>
-                                    <Link className='btn btn-sm' to={`/anagrafica/${anagrafica.Id}`}><FaAddressCard /></Link>
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                    {!loading && !error && anagrafiche.length === 0 && (
-                        <tr>
-                            <td colSpan={6} className='italic text-gray-600'>Nessun risultato trovato...</td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {loading && (
+                            <tr>
+                                <td colSpan={6}>
+                                    {loading && <Loading />}
+                                </td>
+                            </tr>
+                        )}
+                        {!loading && !error && anagrafiche.map((anagrafica) => (
+                            <tr key={anagrafica.Id}
+                                className='hover:bg-gray-200 cursor-pointer'
+                                onClick={() => handleRowClick(anagrafica.Id, anagrafica.IsEducatore)}
+                            >
+                                <td className='text-xl'>
+                                    {anagrafica.IsEducatore ?
+                                        '🎓' :
+                                        (anagrafica.Sesso === UserSex.MALE ? '👦🏻' : '👧🏻')}
+                                </td>
+                                <td>{anagrafica.Cognome}</td>
+                                <td>{anagrafica.Nome}</td>
+                                <td>{anagrafica.CF}</td>
+                                <td>{anagrafica.DataNascita}</td>
+                                <td>
+                                    <button className='btn btn-sm !p-0' onClick={(e) => e.stopPropagation()}>
+                                        <Link className='btn btn-sm' to={`/anagrafica/${anagrafica.Id}`}><FaAddressCard /></Link>
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                        {!loading && !error && anagrafiche.length === 0 && (
+                            <tr>
+                                <td colSpan={6} className='italic text-gray-600'>Nessun risultato trovato...</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 }

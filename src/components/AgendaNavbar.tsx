@@ -94,7 +94,7 @@ function AgendaNavbar(props: IProps) {
           />
       )}
 
-      <div className="flex items-end justify-between mb-6">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-y-4 mb-6">
         <h1 className="h1">
           {props.isCreating
             ? `Nuova ${isFamiglia ? "famiglia" : "anagrafica"}`
@@ -120,7 +120,7 @@ function AgendaNavbar(props: IProps) {
           </div>
         )}
       </div>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col-reverse lg:flex-row lg:items-center justify-between gap-y-4">
         <div className="flex items-center gap-5">
           {tabs.map((tab) => (
             <Link

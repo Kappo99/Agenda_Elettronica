@@ -31,16 +31,16 @@ function Famiglie({ isArchived }: IProps) {
     return (
         <div className='container'>
 
-            <div className='grid grid-cols-3 items-center mb-4'>
-                <div className='col-span-2'>
+            <div className='grid grid-cols-1 lg:grid-cols-3 items-center gap-3 mb-4'>
+                <div className='col-span-1 lg:col-span-2'>
                     <h1 className='h1'>Nuclei Famigliari {isArchived && 'archiviati'}</h1>
                 </div>
-                <div className='col-span-1 flex items-center justify-end gap-5'>
+                <div className='col-span-1 flex items-center lg:justify-end gap-5'>
                     <Link className={`btn ${isArchived && 'disabled'}`} to={'/famiglia'}>Nuovo <MdAdd size={18} /></Link>
                 </div>
             </div>
 
-            <div className='grid grid-cols-2 xl:grid-cols-3 gap-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4'>
                 {!loadingFamiglia && !errorFamiglia && famiglie.map((famiglia, index) => (
                     <div key={index} className='col-span-1 pt-2 pb-4 bg-white border border-gray-300 shadow-md rounded-xl'>
                         <div className='h-full flex flex-col justify-between gap-4'>

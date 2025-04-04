@@ -259,7 +259,7 @@ function Giornata() {
             className="bg-white border border-gray-300 rounded-2xl rounded-tl-none shadow-md p-6 pb-8 relative z-[94]"
           >
             <h2 className="h2 mb-4">Sonno</h2>
-            <div className="grid grid-cols-3 gap-x-10 gap-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-4">
               <div className="col-span-1">
                 <div className="form-element">
                   <label htmlFor="sveglia">Sveglia</label>
@@ -296,7 +296,7 @@ function Giornata() {
                   </button>
                 </div>
               </div>
-              <div className="col-span-3">
+              <div className="col-span-1 lg:col-span-3">
                 <div className="form-element">
                   <label htmlFor="sonno_note">Note</label>
                   <input
@@ -314,9 +314,9 @@ function Giornata() {
                   <h4 className="h4">Pisolini</h4>
                 )}
               {formData.Sonno.Pisolini?.map((pisolino, index) => (
-                <div key={index} className="col-span-3">
-                  <div className="grid grid-cols-10 gap-x-10 gap-y-4">
-                    <div className="col-span-3">
+                <div key={index} className="col-span-1 lg:col-span-3">
+                  <div className="grid grid-cols-1 lg:grid-cols-10 gap-x-10 gap-y-4">
+                    <div className="col-span-1 lg:col-span-3">
                       <div className="form-element">
                         <label htmlFor={`sonno_pisolino_letto_${index}`}>
                           Letto
@@ -332,7 +332,7 @@ function Giornata() {
                         />
                       </div>
                     </div>
-                    <div className="col-span-3">
+                    <div className="col-span-1 lg:col-span-3">
                       <div className="form-element">
                         <label htmlFor={`sonno_pisolino_sveglia_${index}`}>
                           Sveglia
@@ -352,7 +352,7 @@ function Giornata() {
                         />
                       </div>
                     </div>
-                    <div className="col-span-3">
+                    <div className="col-span-1 lg:col-span-3">
                       <div className="form-element">
                         <label htmlFor={`sonno_pisolino_note_${index}`}>
                           Note
@@ -390,7 +390,7 @@ function Giornata() {
             className="bg-white border border-gray-300 rounded-2xl shadow-md p-6 pb-8 -mt-2 relative z-[95]"
           >
             <h2 className="h2 mb-4">Pasti</h2>
-            <div className="grid grid-cols-3 gap-x-10 gap-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-4">
               <div className="col-span-1">
                 <div className="form-element !grid grid-cols-2">
                   <label htmlFor="colazione">Colazione</label>
@@ -404,7 +404,7 @@ function Giornata() {
                   />
                 </div>
               </div>
-              <div className="col-span-2">
+              <div className="col-span-1 lg:col-span-2">
                 <div className="form-element">
                   <label htmlFor="colazione_note">Note</label>
                   <input
@@ -430,7 +430,7 @@ function Giornata() {
                   />
                 </div>
               </div>
-              <div className="col-span-2">
+              <div className="col-span-1 lg:col-span-2">
                 <div className="form-element">
                   <label htmlFor="pranzo_note">Note</label>
                   <input
@@ -456,7 +456,7 @@ function Giornata() {
                   />
                 </div>
               </div>
-              <div className="col-span-2">
+              <div className="col-span-1 lg:col-span-2">
                 <div className="form-element">
                   <label htmlFor="cena_note">Note</label>
                   <input
@@ -482,7 +482,7 @@ function Giornata() {
                   />
                 </div>
               </div>
-              <div className="col-span-2">
+              <div className="col-span-1 lg:col-span-2">
                 <div className="form-element">
                   <label htmlFor="mattino_note">Note</label>
                   <input
@@ -508,7 +508,7 @@ function Giornata() {
                   />
                 </div>
               </div>
-              <div className="col-span-2">
+              <div className="col-span-1 lg:col-span-2">
                 <div className="form-element">
                   <label htmlFor="pomeriggio_note">Note</label>
                   <input
@@ -543,8 +543,8 @@ function Giornata() {
                     </button>
                   </div>
                 </div>
-                <div className="grid grid-cols-6 gap-x-10 gap-y-4">
-                  <div className="col-span-3">
+                <div className="grid grid-cols-1 lg:grid-cols-6 gap-x-10 gap-y-4">
+                  <div className="col-span-1 lg:col-span-3">
                     <div className="form-element">
                       <label htmlFor="tipologia">Tipologia</label>
                       <select
@@ -561,7 +561,7 @@ function Giornata() {
                       </select>
                     </div>
                   </div>
-                  <div className="col-span-3">
+                  <div className="col-span-1 lg:col-span-3">
                     <div className="form-element">
                       <label htmlFor="motivo">Motivo</label>
                       <input
@@ -575,7 +575,7 @@ function Giornata() {
                       />
                     </div>
                   </div>
-                  <div className="col-span-2">
+                  <div className="col-span-1 lg:col-span-2">
                     <div className="form-element">
                       <label htmlFor="uscita_data">Data</label>
                       <input
@@ -590,7 +590,7 @@ function Giornata() {
                       />
                     </div>
                   </div>
-                  <div className="col-span-2">
+                  <div className="col-span-1 lg:col-span-2">
                     <div className="form-element">
                       <label htmlFor="uscita_orario">Orario</label>
                       <input
@@ -604,7 +604,7 @@ function Giornata() {
                       />
                     </div>
                   </div>
-                  <div className="col-span-2">
+                  <div className="col-span-1 lg:col-span-2">
                     <div className="form-element">
                       <label htmlFor="uscita_responsabile">Responsabile</label>
                       <input
@@ -624,8 +624,8 @@ function Giornata() {
                   </div>
                 </div>
                 <h3 className="h3 mb-4 mt-4">Rientro {index + 1}</h3>
-                <div className="grid grid-cols-6 gap-x-10 gap-y-4">
-                  <div className="col-span-2">
+                <div className="grid grid-cols-1 lg:grid-cols-6 gap-x-10 gap-y-4">
+                  <div className="col-span-1 lg:col-span-2">
                     <div className="form-element">
                       <label htmlFor="rientro_data">Data</label>
                       <input
@@ -644,7 +644,7 @@ function Giornata() {
                       />
                     </div>
                   </div>
-                  <div className="col-span-2">
+                  <div className="col-span-1 lg:col-span-2">
                     <div className="form-element">
                       <label htmlFor="rientro_orario">Orario</label>
                       <input
@@ -662,7 +662,7 @@ function Giornata() {
                       />
                     </div>
                   </div>
-                  <div className="col-span-2">
+                  <div className="col-span-1 lg:col-span-2">
                     <div className="form-element">
                       <label htmlFor="rientro_responsabile">Responsabile</label>
                       <input
@@ -683,7 +683,7 @@ function Giornata() {
                 </div>
               </div>
             ))}
-            <div className="w-1/3 mt-6">
+            <div className=" w-2/3 lg:w-1/3 mt-6">
               <div className="form-element">
                 <button
                   onClick={addUscita}
@@ -700,7 +700,7 @@ function Giornata() {
             className="bg-white border border-gray-300 rounded-2xl shadow-md p-6 pb-8 -mt-2 relative z-[97]"
           >
             <h2 className="h2 mb-4">Igiene personale</h2>
-            <div className="grid grid-cols-3 gap-x-10 gap-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-4">
               <div className="col-span-1">
                 <div className="form-element">
                   <label htmlFor="bagno">Bagno</label>
@@ -714,7 +714,7 @@ function Giornata() {
                   />
                 </div>
               </div>
-              <div className="col-span-2">
+              <div className="col-span-1 lg:col-span-2">
                 <div className="form-element">
                   <label htmlFor="bagno_note">Note</label>
                   <input
@@ -740,7 +740,7 @@ function Giornata() {
                   />
                 </div>
               </div>
-              <div className="col-span-2">
+              <div className="col-span-1 lg:col-span-2">
                 <div className="form-element">
                   <label htmlFor="cambio_note">Note</label>
                   <input
@@ -764,9 +764,9 @@ function Giornata() {
             {formData.Terapie.map((terapia, index) => (
               <div
                 key={index}
-                className="grid grid-cols-10 gap-x-10 gap-y-4 mb-6"
+                className="grid grid-cols-1 lg:grid-cols-10 gap-x-10 gap-y-4 mb-6"
               >
-                <div className="col-span-4">
+                <div className="col-span-1 lg:col-span-4">
                   <div className="form-element">
                     <label htmlFor={`tipologia_${index}`}>Tipologia</label>
                     <input
@@ -780,7 +780,7 @@ function Giornata() {
                     />
                   </div>
                 </div>
-                <div className="col-span-3">
+                <div className="col-span-1 lg:col-span-3">
                   <div className="form-element">
                     <label htmlFor={`inizio_${index}`}>Inizio</label>
                     <input
@@ -794,7 +794,7 @@ function Giornata() {
                     />
                   </div>
                 </div>
-                <div className="col-span-3">
+                <div className="col-span-1 lg:col-span-3">
                   <div className="form-element">
                     <label htmlFor={`termine_${index}`}>Termine</label>
                     <input
@@ -808,7 +808,7 @@ function Giornata() {
                     />
                   </div>
                 </div>
-                <div className="col-span-9">
+                <div className="col-span-1 lg:col-span-9">
                   <div className="form-element">
                     <label htmlFor={`terapie_note_${index}`}>Note</label>
                     <input
@@ -822,7 +822,7 @@ function Giornata() {
                     />
                   </div>
                 </div>
-                <div className="col-span-1">
+                <div className="col-span-1 lg:col-span-1">
                   <div className="form-element">
                     <button
                       className="btn btn-danger"
@@ -835,7 +835,7 @@ function Giornata() {
                 </div>
               </div>
             ))}
-            <div className="w-1/3">
+            <div className="w-2/3 lg:w-1/3">
               <div className="form-element">
                 <button
                   onClick={addTerapia}
@@ -868,8 +868,8 @@ function Giornata() {
                 )}
               </div>
             </div>
-            <div className="grid grid-cols-3 gap-x-10 gap-y-4">
-              <div className="col-span-3">
+            <div className="grid grid-cols-1 gap-x-10 gap-y-4">
+              <div className="col-span-1">
                 <div className="form-element flex-col !items-start !gap-2">
                   <label htmlFor="mattina" className="h4">
                     Mattina
@@ -884,7 +884,7 @@ function Giornata() {
                   />
                 </div>
               </div>
-              <div className="col-span-3">
+              <div className="col-span-1">
                 <div className="form-element flex-col !items-start !gap-2">
                   <label htmlFor="pomeriggio" className="h4">
                     Pomeriggio
@@ -899,7 +899,7 @@ function Giornata() {
                   />
                 </div>
               </div>
-              <div className="col-span-3">
+              <div className="col-span-1">
                 <div className="form-element flex-col !items-start !gap-2">
                   <label htmlFor="sera" className="h4">
                     Sera

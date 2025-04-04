@@ -82,9 +82,9 @@ function Profilo() {
     return (
         <div className='container'>
 
-            <div className='grid grid-cols-5 gap-10'>
+            <div className='grid grid-cols-1 lg:grid-cols-5 gap-10'>
 
-                <section className='col-span-3 flex flex-col gap-4 bg-white border border-gray-300 rounded-2xl shadow-md p-6'>
+                <section className='col-span-1 lg:col-span-3 flex flex-col gap-4 bg-white border border-gray-300 rounded-2xl shadow-md p-6'>
 
                     <h2 className='h2'>Dati anagrafici</h2>
 
@@ -121,7 +121,7 @@ function Profilo() {
 
                 </section>
 
-                <section className='col-span-2 flex flex-col gap-4 bg-white border border-gray-300 rounded-2xl shadow-md p-6'>
+                <section className='col-span-1 lg:col-span-2 flex flex-col gap-4 bg-white border border-gray-300 rounded-2xl shadow-md p-6'>
 
                     <h2 className='h2'>Modifica password</h2>
 

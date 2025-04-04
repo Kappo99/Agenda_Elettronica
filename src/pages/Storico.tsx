@@ -73,112 +73,114 @@ function Storico() {
     <div className="container">
       <AgendaNavbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
-      <table className="rounded-tl-none">
-        <thead>
-          <tr>
-            <th>Data</th>
-            <th>Sonno</th>
-            <th>Uscita</th>
-            <th>Fatti significativi</th>
-						<th>
-							<div className='flex justify-center'>
-								<button className='btn btn-sm' onClick={() => setFavoritesOnly(!favoritesOnly)}>
-									<FaStar />
-								</button>
-							</div>
-						</th>
-            <th></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {loading && (
+      <div className="overflow-x-auto">
+        <table className="min-w-full">
+          <thead>
             <tr>
-              <td colSpan={5}>{loading && <Loading />}</td>
+              <th>Data</th>
+              <th>Sonno</th>
+              <th>Uscita</th>
+              <th>Fatti significativi</th>
+              <th>
+                <div className='flex justify-center'>
+                  <button className='btn btn-sm' onClick={() => setFavoritesOnly(!favoritesOnly)}>
+                    <FaStar />
+                  </button>
+                </div>
+              </th>
+              <th></th>
             </tr>
-          )}
-          {!loading &&
-            !error &&
-            agenda.map((giornata, index) => (
-              <tr key={index} className="hover:bg-gray-200 cursor-pointer" onClick={() => navigate(`/giornata/${id}/${giornata.Data}`)}>
-                <td>{giornata.Data}</td>
-                <td>
-                  {giornata.Sonno?.Sveglia != null ? "✅" : "❌"} |{" "}
-                  {giornata.Sonno?.Letto != null ? "✅" : "❌"}
-                </td>
-                <td>
-                  {giornata.Uscite.some(
-                    (uscita) => uscita.Data != null || uscita.Tipologia
-                  )
-                    ? giornata.Uscite.some(
-                        (uscita) =>
-                          uscita.Data != null && uscita.DataRientro != null
-                      )
-                      ? "✅"
-                      : "🕒"
-                    : "❌"}
-                </td>
-                <td>
-                  {""
-                    .concat(
-                      giornata.FattiSignificativi?.Mattina ?? "",
-                      " ",
-                      giornata.FattiSignificativi?.Pomeriggio ?? "",
-                      " ",
-                      giornata.FattiSignificativi?.Sera ?? ""
+          </thead>
+
+          <tbody>
+            {loading && (
+              <tr>
+                <td colSpan={5}>{loading && <Loading />}</td>
+              </tr>
+            )}
+            {!loading &&
+              !error &&
+              agenda.map((giornata, index) => (
+                <tr key={index} className="hover:bg-gray-200 cursor-pointer" onClick={() => navigate(`/giornata/${id}/${giornata.Data}`)}>
+                  <td>{giornata.Data}</td>
+                  <td>
+                    {giornata.Sonno?.Sveglia != null ? "✅" : "❌"} |{" "}
+                    {giornata.Sonno?.Letto != null ? "✅" : "❌"}
+                  </td>
+                  <td>
+                    {giornata.Uscite.some(
+                      (uscita) => uscita.Data != null || uscita.Tipologia
                     )
-                    .substring(0, 35)
-                    .concat("...")}
-                </td>
-                <td>
-                  <div className='flex justify-center'>
-                    {giornata.FattiSignificativi.IsPreferito ? (
-                      <FaStar size={24} className='text-yellow-500' />
-                    ) : (
-                      <FaRegStar size={24} className='text-yellow-500' />
-                    )}
-                  </div>
-                </td>
-                <td className="flex justify-center gap-2" onClick={(e) => e.stopPropagation()}>
-                  <button>
-                    <Link
-                      className="btn btn-sm btn-primary"
-                      to={`/giornata/${id}/${giornata.Data}`}
-                    >
-                      <FaFileSignature />
-                    </Link>
-                  </button>
-                  <button
-                    className="btn btn-sm btn-outline"
-                    onClick={() =>
-                      dispatch(
-                        addNotification({
-                          message: "Funzione download disabilitata in modalità demo",
-                          type: MessageType.INFO,
-                        })
+                      ? giornata.Uscite.some(
+                          (uscita) =>
+                            uscita.Data != null && uscita.DataRientro != null
+                        )
+                        ? "✅"
+                        : "🕒"
+                      : "❌"}
+                  </td>
+                  <td>
+                    {""
+                      .concat(
+                        giornata.FattiSignificativi?.Mattina ?? "",
+                        " ",
+                        giornata.FattiSignificativi?.Pomeriggio ?? "",
+                        " ",
+                        giornata.FattiSignificativi?.Sera ?? ""
                       )
-                    }
-                  >
-                    <MdDownload />
-                  </button>
-                  <button
-                    className="btn btn-sm btn-danger"
-                    onClick={() => handleDeleteConfirmClick(giornata.Data)}
-                  >
-                    <MdDelete />
-                  </button>
+                      .substring(0, 35)
+                      .concat("...")}
+                  </td>
+                  <td>
+                    <div className='flex justify-center'>
+                      {giornata.FattiSignificativi.IsPreferito ? (
+                        <FaStar size={24} className='text-yellow-500' />
+                      ) : (
+                        <FaRegStar size={24} className='text-yellow-500' />
+                      )}
+                    </div>
+                  </td>
+                  <td className="flex justify-center gap-2" onClick={(e) => e.stopPropagation()}>
+                    <button>
+                      <Link
+                        className="btn btn-sm btn-primary"
+                        to={`/giornata/${id}/${giornata.Data}`}
+                      >
+                        <FaFileSignature />
+                      </Link>
+                    </button>
+                    <button
+                      className="btn btn-sm btn-outline"
+                      onClick={() =>
+                        dispatch(
+                          addNotification({
+                            message: "Funzione download disabilitata in modalità demo",
+                            type: MessageType.INFO,
+                          })
+                        )
+                      }
+                    >
+                      <MdDownload />
+                    </button>
+                    <button
+                      className="btn btn-sm btn-danger"
+                      onClick={() => handleDeleteConfirmClick(giornata.Data)}
+                    >
+                      <MdDelete />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            {!loading && !error && agenda.length === 0 && (
+              <tr>
+                <td colSpan={5} className="italic text-gray-600">
+                  Nessun risultato trovato...
                 </td>
               </tr>
-            ))}
-          {!loading && !error && agenda.length === 0 && (
-            <tr>
-              <td colSpan={5} className="italic text-gray-600">
-                Nessun risultato trovato...
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
