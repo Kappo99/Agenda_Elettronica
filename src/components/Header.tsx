@@ -31,10 +31,10 @@ function Header() {
                     <div className='flex flex-col md:flex-row items-center justify-between gap-x-10 gap-y-6'>
 
                         <Link to='/'>
-                            <img src={KMsolution} className='w-auto h-8' alt='Agenda Elettronica' />
+                            <img src={KMsolution} className='w-auto h-8' alt='DailyCare' />
                         </Link>
 
-                        <span className='flex-1 h2 text-center'>Agenda Elettronica</span>
+                        <span className='flex-1 h2 text-center'>DailyCare</span>
 
                         <div className='flex justify-end'>
                             {location.pathname === '/profilo' ? (

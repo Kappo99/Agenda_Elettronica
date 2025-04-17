@@ -16,7 +16,7 @@ function Footer() {
 
                     <span className='credits'>&copy; {(new Date().getFullYear())} - Tutti i diritti riservati</span>
 
-                    {/* <img src={KMsolution} className='w-auto h-8' alt='Agenda Elettronica' /> */}
+                    {/* <img src={KMsolution} className='w-auto h-8' alt='DailyCare' /> */}
                     <button>
                         {location.pathname === '/' ? (
                             <Link to='/archivio' className='btn'>Archivio <MdFolderOpen size={18} /></Link>

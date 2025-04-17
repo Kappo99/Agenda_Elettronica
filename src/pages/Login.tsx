@@ -58,14 +58,14 @@ function Login() {
 
                     <div className='col-span-1 lg:col-span-2'>
                         <div className="max-w-[120px] lg:max-w-lg mx-auto">
-                            <img className='w-full h-full' src={KMsolution} alt='Agenda Elettronica' />
+                            <img className='w-full h-full' src={KMsolution} alt='DailyCare' />
                         </div>
                     </div>
 
                     <div className='col-span-1 lg:col-span-3'>
 
-                        <h1 className='h2 text-center mb-2'>Agenda Elettronica</h1>
-                        <h3 className='h3 text-center mb-4 lg:mb-6'>Daily Care</h3>
+                        <h1 className='h2 text-center mb-2'>Daily Care</h1>
+                        <h3 className='h3 text-center mb-4 lg:mb-6'>Agenda Elettronica</h3>
                         <p className='text-center mb-4 italic'>
                             <b>NOTA:</b> Versione dimostrativa. I dati inseriti o cancellati non verranno memorizzati 
                             una volta usciti da ogni schermata
