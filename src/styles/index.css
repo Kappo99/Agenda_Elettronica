@@ -42,7 +42,7 @@ code {
 @layer components {
   .btn {
     @apply w-fit px-6 py-1.5 rounded-full text-nowrap;
-    @apply bg-agenda_primary hover:bg-agenda_primary-dark text-white;
+    @apply bg-agenda_primary hover:bg-agenda_primary-hover text-white;
     @apply uppercase text-sm;
     @apply flex items-center justify-center gap-3;
 
@@ -61,7 +61,7 @@ code {
     }
 
     &.btn-primary {
-      @apply bg-agenda_primary hover:bg-agenda_primary-dark text-white;
+      @apply bg-agenda_primary hover:bg-agenda_primary-hover text-white;
     }
     &.btn-danger {
       @apply bg-red-500 hover:bg-red-700 text-white;

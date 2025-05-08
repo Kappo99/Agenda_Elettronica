@@ -91,7 +91,7 @@ function Login() {
                         )}
 
                         <p className='mt-6 text-center'>
-                            Password dimenticata? <span className='hover:text-agenda_primary-dark cursor-pointer' onClick={() => setShowFormForgotPassword(true)}>Clicca qui</span>
+                            Password dimenticata? <span className='hover:text-agenda_primary-hover cursor-pointer' onClick={() => setShowFormForgotPassword(true)}>Clicca qui</span>
                         </p>
 
                     </div>

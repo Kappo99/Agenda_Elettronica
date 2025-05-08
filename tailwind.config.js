@@ -19,7 +19,7 @@ module.exports = {
       colors: {
         agenda_primary: {
           DEFAULT: '#0096D4',
-          dark: '#1273eb',
+          hover: '#00C97E',
         }
       }
     },
