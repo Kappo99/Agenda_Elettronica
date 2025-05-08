@@ -37,7 +37,7 @@ function AgendaNavbar(props: IProps) {
     const anagraficaTabs = [{ name: "Dati anagrafici", path: `/anagrafica/${id}` }];
     const famigliaTabs = [{ name: "Famiglia", path: `/famiglia/${id}` }];
     const userTabs = [
-      { name: "Giornata", path: `/${str ?? (isFamiglia ? "famiglia" : "anagrafica")}/giornata/${id}/${todayStr()}` },
+      { name: "Giornata", path: `/${str ?? (isFamiglia ? "famiglia" : "anagrafica")}/giornata/${id}/${date ?? todayStr()}` },
       { name: "Storico", path: `/${str ?? (isFamiglia ? "famiglia" : "anagrafica")}/storico/${id}` },
     ];
     const baseTabs = isFamiglia ? famigliaTabs : anagraficaTabs;
@@ -47,7 +47,7 @@ function AgendaNavbar(props: IProps) {
     }
 
     return baseTabs;
-  }, [id, str, isFamiglia, selectedAnagrafica]);
+  }, [id, str, isFamiglia, selectedAnagrafica, date]);
 
   // Imposto l'activeTab in base alla rotta corrente
   useEffect(() => {
