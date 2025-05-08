@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { login } from '../redux/slices/authSlice';
-import KMsolution from '../images/KMsolution.png';
+import DailyCare from '../images/DailyCare.png';
 import { isValidEmail } from '../utils/functions';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import FormForgotPasswordPopup from '../components/popup/FormForgotPasswordPopup';
@@ -58,7 +58,7 @@ function Login() {
 
                     <div className='col-span-1 lg:col-span-2'>
                         <div className="max-w-[120px] lg:max-w-lg mx-auto">
-                            <img className='w-full h-full' src={KMsolution} alt='DailyCare' />
+                            <img className='w-full h-full' src={DailyCare} alt='DailyCare' />
                         </div>
                     </div>
 
