@@ -170,7 +170,7 @@ function AgendaNavbar(props: IProps) {
           <div className="flex items-center gap-4">
             {/* <SearchBar value={props.searchTerm ?? ''} onChange={props.setSearchTerm ?? (() => { })} /> */}
             <Link
-              to={`/giornata/${id}/${todayStr()}`}
+              to={`/${str}/giornata/${id}/${todayStr()}`}
               className={`btn ${
                 selectedAnagrafica?.IsArchiviato && " disabled"
               }`}

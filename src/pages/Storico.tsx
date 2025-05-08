@@ -14,6 +14,7 @@ import { usePopup } from "../context/PopupContext";
 
 function Storico() {
   const { id } = useParams<{ id: string }>();
+  const { str } = useParams<{ str: string }>();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const {
@@ -101,7 +102,7 @@ function Storico() {
             {!loading &&
               !error &&
               agenda.map((giornata, index) => (
-                <tr key={index} className="hover:bg-gray-200 cursor-pointer" onClick={() => navigate(`/giornata/${id}/${giornata.Data}`)}>
+                <tr key={index} className="hover:bg-gray-200 cursor-pointer" onClick={() => navigate(`/${str}/giornata/${id}/${giornata.Data}`)}>
                   <td>{giornata.Data}</td>
                   <td>
                     {giornata.Sonno?.Sveglia != null ? "✅" : "❌"} |{" "}
@@ -144,7 +145,7 @@ function Storico() {
                     <button>
                       <Link
                         className="btn btn-sm btn-primary"
-                        to={`/giornata/${id}/${giornata.Data}`}
+                        to={`/${str}/giornata/${id}/${giornata.Data}`}
                       >
                         <FaFileSignature />
                       </Link>
