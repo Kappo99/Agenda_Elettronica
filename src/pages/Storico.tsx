@@ -144,6 +144,7 @@ function Storico() {
                   <td className="flex justify-center gap-2" onClick={(e) => e.stopPropagation()}>
                     <button>
                       <Link
+                        id={`storico_button_day_${index}`}
                         className="btn btn-sm btn-primary"
                         to={`/${str}/giornata/${id}/${giornata.Data}`}
                       >
