@@ -17,10 +17,8 @@ module.exports = {
     },
     extend: {
       colors: {
-        agenda_primary: {
-          DEFAULT: '#0096D4',
-          hover: '#00C97E',
-        }
+        dc_blue: '#0096d4',
+        dc_green: '#00d4a0',
       }
     },
   },

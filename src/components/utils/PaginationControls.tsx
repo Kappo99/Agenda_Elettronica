@@ -46,7 +46,7 @@ function PaginationControls({ page, totalPages, onPageChange }: IProps) {
                         key={index}
                         onClick={() => typeof p === 'number' && onPageChange(p)}
                         disabled={p === page || p === '...'}
-                        className={`px-2 py-1 ${p === page ? 'font-bold text-agenda_primary-hover' : ''}`}
+                        className={`px-2 py-1 ${p === page ? 'font-bold text-dc_green' : ''}`}
                     >
                         {p}
                     </button>
