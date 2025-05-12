@@ -28,7 +28,7 @@ function Footer() {
                     <div className='flex items-center gap-2'>
                         <span data-translate='footer_credits'>Powered by</span>
                         <a href='https://kmsolution.it/dailycare-agenda-elettronica/' target='_blank'>
-                            <img src={KMsolution_white} className='w-auto h-4' alt='KMsolution' />
+                            <img src={KMsolution_white} className='w-auto h-4' alt='KMsolution - DailyCare' />
                         </a>
                     </div>
 
