@@ -4,7 +4,6 @@ import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { fetchAnagraficaById } from "../redux/slices/anagraficaSlice";
 import { todayStr } from "../utils/functions";
-import SearchBar from "./utils/SearchBar";
 import { fetchFamigliaById } from "../redux/slices/famigliaSlice";
 import FormDownloadStoricoPopup from "./popup/FormDownloadStoricoPopup";
 
