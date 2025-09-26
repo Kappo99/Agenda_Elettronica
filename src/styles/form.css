@@ -11,7 +11,7 @@
   
     button {
         @apply w-full px-4 py-1 rounded-lg;
-        @apply bg-dc_blue hover:bg-dc_green text-white;
+        @apply bg-dc_blue hover:bg-dc_blue/80 text-white;
         @apply uppercase text-sm;
         @apply flex items-center justify-center gap-3;
     }

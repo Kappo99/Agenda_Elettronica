@@ -19,9 +19,9 @@ function Footer() {
                     {/* <img src={KMsolution} className='w-auto h-8' alt='DailyCare' /> */}
                     <button>
                         {location.pathname === '/' ? (
-                            <Link to='/archivio' className='btn'>Archivio <MdFolderOpen size={18} /></Link>
+                            <Link to='/archivio' className='btn btn-secondary'>Archivio <MdFolderOpen size={18} /></Link>
                         ) : (
-                            <Link to='/' className='btn'>Agenda <MdFolderOpen size={18} /></Link>
+                            <Link to='/' className='btn btn-secondary'>Agenda <MdFolderOpen size={18} /></Link>
                         )}
                     </button>
 

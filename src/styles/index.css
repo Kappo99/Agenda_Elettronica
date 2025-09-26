@@ -42,7 +42,7 @@ code {
 @layer components {
   .btn {
     @apply w-fit px-6 py-1.5 rounded-full text-nowrap;
-    @apply bg-dc_blue hover:bg-dc_green text-white;
+    @apply bg-dc_blue hover:bg-dc_blue/80 text-white;
     @apply uppercase text-sm;
     @apply flex items-center justify-center gap-3;
 
@@ -61,7 +61,10 @@ code {
     }
 
     &.btn-primary {
-      @apply bg-dc_blue hover:bg-dc_green text-white;
+      @apply bg-dc_blue hover:bg-dc_blue/80 text-white;
+    }
+    &.btn-secondary {
+      @apply bg-dc_green hover:bg-dc_green/80 text-black;
     }
     &.btn-danger {
       @apply bg-red-500 hover:bg-red-700 text-white;
