@@ -8,7 +8,7 @@ function Home() {
   return (
     <>
       <div className="container mb-4">
-        <button className="btn mx-auto" onClick={() => setIsFamiglie(!isFamiglie)}>Visualizzazione famiglie / anagrafiche</button>
+        <button className="btn mx-auto" onClick={() => setIsFamiglie(!isFamiglie)}>Visualizzazione Famiglie / Persone</button>
       </div>
       
       {isFamiglie ? <Famiglie /> : <Anagrafiche />}
